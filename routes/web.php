@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,8 @@ Route::get('/', function () {
 });
 
 # ============ Frontend  Routes Start ============ # 
+
+// Route::get('/',[FrontendController::class,'index']);
 
 # Frontend Routes and prefix with group
 
