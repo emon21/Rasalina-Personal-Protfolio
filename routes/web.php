@@ -1,8 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -19,38 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-# ============ Frontend  Routes Start ============ # 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/',[FrontendController::class,'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-# Frontend Routes and prefix with group
-
-// Route::group(['prefix' => 'frontend'], function () {
-
-//     Route::get('home', [DemoController::class, 'demo'])->name('frontend.home');
-//     Route::get('about', function () {
-//         echo "This is the frontend about page";
-//     })->name('frontend.about');
-// });
-
-
-# ============ Frontend  Routes End ============ # 
-
-
-# ============ Backend Routes Routes Start ============ # 
-
-# Backend Routes and prefix with group
-
-// Route::group(['prefix' => 'backend'], function () {
-
-//     Route::get('dashboard', function () {
-//         echo "This is the backend dashboard page";
-//     })->name('backend.dashboard');
-
-//     Route::get('settings', function () {
-//         echo "This is the backend settings page";
-//     })->name('backend.settings');
-// });
-
-
-# ============ Backend Routes Routes End ============ # 
+require __DIR__.'/auth.php';
