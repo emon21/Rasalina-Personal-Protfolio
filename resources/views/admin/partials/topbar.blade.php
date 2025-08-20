@@ -5,19 +5,19 @@
              <div class="navbar-brand-box">
                  <a href="{{ route('dashboard') }}" class="logo logo-dark">
                      <span class="logo-sm">
-                         <img src="{{ asset('backend') }}/images/logo-sm.png" alt="logo-sm" height="22">
+                         <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="logo-sm" height="22">
                      </span>
                      <span class="logo-lg">
-                         <img src="{{ asset('backend') }}/images/logo-dark.png" alt="logo-dark" height="20">
+                         <img src="{{ asset('backend') }}/assets/images/logo-dark.png" alt="logo-dark" height="20">
                      </span>
                  </a>
 
                  <a href="{{ route('dashboard') }}" class="logo logo-light">
                      <span class="logo-sm">
-                         <img src="{{ asset('backend') }}/images/logo-sm.png" alt="logo-sm-light" height="22">
+                         <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="logo-sm-light" height="22">
                      </span>
                      <span class="logo-lg">
-                         <img src="{{ asset('backend') }}/images/logo-light.png" alt="logo-light" height="20">
+                         <img src="{{ asset('backend') }}/assets/images/logo-light.png" alt="logo-light" height="20">
                      </span>
                  </a>
              </div>
@@ -64,32 +64,32 @@
              <div class="dropdown d-none d-sm-inline-block">
                  <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false">
-                     <img class="" src="{{ asset('backend') }}/images/flags/us.jpg" alt="Header Language"
+                     <img class="" src="{{ asset('backend') }}/assets/images/flags/us.jpg" alt="Header Language"
                          height="16">
                  </button>
                  <div class="dropdown-menu dropdown-menu-end">
 
                      <!-- item-->
                      <a href="javascript:void(0);" class="dropdown-item notify-item">
-                         <img src="{{ asset('backend') }}/images/flags/spain.jpg" alt="user-image" class="me-1"
+                         <img src="{{ asset('backend') }}/assets/images/flags/spain.jpg" alt="user-image" class="me-1"
                              height="12"> <span class="align-middle">Spanish</span>
                      </a>
 
                      <!-- item-->
                      <a href="javascript:void(0);" class="dropdown-item notify-item">
-                         <img src="{{ asset('backend') }}/images/flags/germany.jpg" alt="user-image" class="me-1"
+                         <img src="{{ asset('backend') }}/assets/images/flags/germany.jpg" alt="user-image" class="me-1"
                              height="12"> <span class="align-middle">German</span>
                      </a>
 
                      <!-- item-->
                      <a href="javascript:void(0);" class="dropdown-item notify-item">
-                         <img src="{{ asset('backend') }}/images/flags/italy.jpg" alt="user-image" class="me-1"
+                         <img src="{{ asset('backend') }}/assets/images/flags/italy.jpg" alt="user-image" class="me-1"
                              height="12"> <span class="align-middle">Italian</span>
                      </a>
 
                      <!-- item-->
                      <a href="javascript:void(0);" class="dropdown-item notify-item">
-                         <img src="{{ asset('backend') }}/images/flags/russia.jpg" alt="user-image" class="me-1"
+                         <img src="{{ asset('backend') }}/assets/images/flags/russia.jpg" alt="user-image" class="me-1"
                              height="12"> <span class="align-middle">Russian</span>
                      </a>
                  </div>
@@ -105,19 +105,19 @@
                          <div class="row g-0">
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/images/brands/github.png" alt="Github">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/github.png" alt="Github">
                                      <span>GitHub</span>
                                  </a>
                              </div>
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/images/brands/bitbucket.png" alt="bitbucket">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/bitbucket.png" alt="bitbucket">
                                      <span>Bitbucket</span>
                                  </a>
                              </div>
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/images/brands/dribbble.png" alt="dribbble">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/dribbble.png" alt="dribbble">
                                      <span>Dribbble</span>
                                  </a>
                              </div>
@@ -126,19 +126,19 @@
                          <div class="row g-0">
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/images/brands/dropbox.png" alt="dropbox">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/dropbox.png" alt="dropbox">
                                      <span>Dropbox</span>
                                  </a>
                              </div>
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/images/brands/mail_chimp.png" alt="mail_chimp">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/mail_chimp.png" alt="mail_chimp">
                                      <span>Mail Chimp</span>
                                  </a>
                              </div>
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/images/brands/slack.png" alt="slack">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/slack.png" alt="slack">
                                      <span>Slack</span>
                                  </a>
                              </div>
@@ -185,7 +185,7 @@
                          </a>
                          <a href="" class="text-reset notification-item">
                              <div class="d-flex">
-                                 <img src="{{ asset('backend') }}/images/users/avatar-3.jpg"
+                                 <img src="{{ asset('backend') }}/assets/images/users/avatar-3.jpg"
                                      class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                  <div class="flex-1">
                                      <h6 class="mb-1">James Lemire</h6>
@@ -216,7 +216,7 @@
 
                          <a href="" class="text-reset notification-item">
                              <div class="d-flex">
-                                 <img src="{{ asset('backend') }}/images/users/avatar-4.jpg"
+                                 <img src="{{ asset('backend') }}/assets/images/users/avatar-4.jpg"
                                      class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                  <div class="flex-1">
                                      <h6 class="mb-1">Salena Layfield</h6>
@@ -244,7 +244,7 @@
                  <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <img class="rounded-circle header-profile-user"
-                         src="{{ asset('backend') }}/images/users/avatar-1.jpg" alt="Header Avatar">
+                         src="{{ asset('backend') }}/assets/images/users/avatar-1.jpg" alt="Header Avatar">
                      <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }}</span>
                      <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                  </button>
@@ -264,7 +264,7 @@
                      {{-- <a class="dropdown-item text-danger" href="{{ route('logout') }}">
                                 <i class="ri-shut-down-line align-middle me-1 text-danger"></i>
                                 Logout</a> --}}
-                     <form method="POST" action="{{ route('logout') }}">
+                     <form method="POST" action="{{ route('admin.logout') }}">
                          @csrf
                          <button type="submit" class="dropdown-item text-danger">
                              <i class="ri-shut-down-line align-middle me-1 text-danger"></i>

@@ -5,7 +5,7 @@
         <!-- User details -->
         <div class="user-profile text-center mt-3">
             <div class="">
-                <img src="{{ asset('backend') }}/images/users/avatar-1.jpg" alt=""
+                <img src="{{ asset('backend') }}/assets/images/users/avatar-1.jpg" alt=""
                     class="avatar-md rounded-circle">
             </div>
             <div class="mt-3">
