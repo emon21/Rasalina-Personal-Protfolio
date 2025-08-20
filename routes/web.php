@@ -18,9 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+# Login to Dashboard
 Route::get('/dashboard', function () {
-    return view('dashboard');
+
+    // return view('dashboard');
+    return view('admin.index');
+
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
