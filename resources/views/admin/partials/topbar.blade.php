@@ -77,8 +77,8 @@
 
                      <!-- item-->
                      <a href="javascript:void(0);" class="dropdown-item notify-item">
-                         <img src="{{ asset('backend') }}/assets/images/flags/germany.jpg" alt="user-image" class="me-1"
-                             height="12"> <span class="align-middle">German</span>
+                         <img src="{{ asset('backend') }}/assets/images/flags/germany.jpg" alt="user-image"
+                             class="me-1" height="12"> <span class="align-middle">German</span>
                      </a>
 
                      <!-- item-->
@@ -89,8 +89,8 @@
 
                      <!-- item-->
                      <a href="javascript:void(0);" class="dropdown-item notify-item">
-                         <img src="{{ asset('backend') }}/assets/images/flags/russia.jpg" alt="user-image" class="me-1"
-                             height="12"> <span class="align-middle">Russian</span>
+                         <img src="{{ asset('backend') }}/assets/images/flags/russia.jpg" alt="user-image"
+                             class="me-1" height="12"> <span class="align-middle">Russian</span>
                      </a>
                  </div>
              </div>
@@ -105,19 +105,22 @@
                          <div class="row g-0">
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/assets/images/brands/github.png" alt="Github">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/github.png"
+                                         alt="Github">
                                      <span>GitHub</span>
                                  </a>
                              </div>
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/assets/images/brands/bitbucket.png" alt="bitbucket">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/bitbucket.png"
+                                         alt="bitbucket">
                                      <span>Bitbucket</span>
                                  </a>
                              </div>
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/assets/images/brands/dribbble.png" alt="dribbble">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/dribbble.png"
+                                         alt="dribbble">
                                      <span>Dribbble</span>
                                  </a>
                              </div>
@@ -126,13 +129,15 @@
                          <div class="row g-0">
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/assets/images/brands/dropbox.png" alt="dropbox">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/dropbox.png"
+                                         alt="dropbox">
                                      <span>Dropbox</span>
                                  </a>
                              </div>
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/assets/images/brands/mail_chimp.png" alt="mail_chimp">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/mail_chimp.png"
+                                         alt="mail_chimp">
                                      <span>Mail Chimp</span>
                                  </a>
                              </div>
@@ -244,13 +249,18 @@
                  <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <img class="rounded-circle header-profile-user"
-                         src="{{ asset('backend') }}/assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                         @if (Auth::user()->profileImage == null) src="{{ asset('uploads') }}/no_image.jpg"
+                            @else
+
+                            src="{{ asset(Auth::user()->profileImage) }}" @endif
+                         alt="Header Avatar" width="250">
                      <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }}</span>
                      <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                  </button>
                  <div class="dropdown-menu dropdown-menu-end">
                      <!-- item-->
-                     <a class="dropdown-item" href="#"><i class="ri-user-line align-middle me-1"></i>
+                     <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
+                             class="ri-user-line align-middle me-1"></i>
                          Profile</a>
                      <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle me-1"></i> My
                          Wallet</a>

@@ -5,8 +5,10 @@
         <!-- User details -->
         <div class="user-profile text-center mt-3">
             <div class="">
-                <img src="{{ asset('backend') }}/assets/images/users/avatar-1.jpg" alt=""
-                    class="avatar-md rounded-circle">
+                <img @if (Auth::user()->profileImage == null) src="{{ asset('uploads') }}/no_image.jpg"
+                            @else
+                            src="{{ asset(Auth::user()->profileImage) }}" @endif
+                    alt="" class="avatar-md rounded-circle" width="240">
             </div>
             <div class="mt-3">
                 <h4 class="font-size-16 mb-1">Hi, {{ Auth::user()->name }}</h4>
@@ -22,7 +24,7 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="{{route('dashboard')}}" class="waves-effect">
+                    <a href="{{ route('dashboard') }}" class="waves-effect">
                         <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
                         <span>Dashboard</span>
                     </a>
@@ -62,7 +64,7 @@
                 </li>
 
 
-               
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-share-line"></i>

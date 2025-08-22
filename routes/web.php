@@ -37,6 +37,12 @@ Route::controller(AdminController::class)->group(function () {
 
     // Route::get('/admin/login','login')->name('admin.login');
     Route::post('/admin/logout','logout')->name('admin.logout');
+    //profile
+    Route::get('/admin/profile', 'profile')->name('admin.profile');
+    //Edit Profile
+    Route::get('/admin/edit/profile', 'EditProfile')->name('admin.edit.profile');
+    //Update Profile
+    Route::put('/admin/update/profile', 'UpdateProfile')->name('admin.update.profile');
 });
 
 

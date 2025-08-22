@@ -27,7 +27,6 @@
         <div class="container-fluid p-0">
             <div class="card">
                 <div class="card-body">
-
                     <div class="text-center mt-4">
                         <div class="mb-3">
                             <a href="#" class="auth-logo">
@@ -65,10 +64,14 @@
                                         type="submit">Login</button>
                                 </div>
                             </div>
-
-                            <div class="form-group mt-2 mb-0 row">
-                                <div class="col-12 mt-3 text-center">
-                                    <a href="{{ route('register') }}" class="text-muted">You have a account?</a>
+                            <div class="form-group mb-0 row mt-2">
+                                <div class="col-sm-7 mt-3">
+                                    <a href="{{ route('password.request') }}" class="text-muted"><i class="mdi mdi-lock"></i>
+                                         Forgot your password?</a>
+                                </div>
+                                <div class="col-sm-5 mt-3">
+                                    <a href="{{ route('register') }}" class="text-muted"><i
+                                            class="mdi mdi-account-circle"></i> Create an account</a>
                                 </div>
                             </div>
                         </form>
@@ -82,9 +85,7 @@
         <!-- end container -->
     </div>
     <!-- end -->
-
-
-    <!-- JAVASCRIPT -->
+     <!-- JAVASCRIPT -->
     <script src="{{ asset('backend') }}/assets/libs/jquery/jquery.min.js"></script>
     <script src="{{ asset('backend') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('backend') }}/assets/libs/metismenu/metisMenu.min.js"></script>
