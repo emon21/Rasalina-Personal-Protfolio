@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
+use ToastrHelper;
 
 class AdminController extends Controller
 {
@@ -59,9 +61,9 @@ class AdminController extends Controller
 
             //old image delete
             if ($user->profileImage) {
-             unlink(public_path($user->profileImage));
+                unlink(public_path($user->profileImage));
             }
-            
+
             //uploads image
             $file = $request->file('profileImage');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -85,6 +87,8 @@ class AdminController extends Controller
         // ]);
 
 
+        # Toaster Helper Function Using
+        flashToastr('success', 'Profile Has been Successfully Updated','Profile Updated');
         return redirect()->route('admin.profile');
     }
 }

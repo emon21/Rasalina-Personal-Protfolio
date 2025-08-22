@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     {{-- <title>Dashboard | Upcube - Admin & Dashboard Template</title> --}}
     {{-- <title>{{ $title ?? 'Upcube - Admin & Dashboard Template' }}</title> --}}
-    <title>@yield('title','Dashboard')</title>
+    <title>@yield('title', 'Dashboard')</title>
     {{-- <title>{{ $title ?? 'Dashboard' }}</title> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
@@ -19,19 +19,29 @@
         rel="stylesheet" type="text/css" />
 
     <!-- DataTables -->
-    <link href="{{ asset('backend') }}/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('backend') }}/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css"
+        rel="stylesheet" type="text/css" />
 
     <!-- Responsive datatable examples -->
     <link href="{{ asset('backend') }}/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
         rel="stylesheet" type="text/css" />
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('backend') }}/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend') }}/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
     <!-- Icons Css -->
     <link href="{{ asset('backend') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('backend') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+    <!-- Toastr Css -->
+
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
+    <!-- font-awesome Css -->
+    {{-- <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" /> --}}
+
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" /> --}}
 
 </head>
 
@@ -79,7 +89,8 @@
     <script src="{{ asset('backend') }}/assets/libs/apexcharts/apexcharts.min.js"></script>
 
     <!-- jquery.vectormap map -->
-    <script src="{{ asset('backend') }}/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="{{ asset('backend') }}/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js">
+    </script>
     <script src="{{ asset('backend') }}/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js">
     </script>
 
@@ -89,13 +100,24 @@
 
     <!-- Responsive examples -->
     <script src="{{ asset('backend') }}/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="{{ asset('backend') }}/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ asset('backend') }}/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js">
+    </script>
 
     <script src="{{ asset('backend') }}/assets/js/pages/dashboard.init.js"></script>
 
     <!-- App js -->
     <script src="{{ asset('backend') }}/assets/js/app.js"></script>
 
+    <!-- Toastr js -->
+
+
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+
+    {!! renderToastr() !!}
+
     @stack('script')
 </body>
+
 </html>

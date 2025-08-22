@@ -1,5 +1,7 @@
 <?php
 
+// use Brian2694\Toastr\Toastr;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
@@ -15,8 +17,14 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+
+    return view('test');
 });
 
 # Login to Dashboard
