@@ -17,19 +17,15 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-    Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
-
-    return view('test');
+    return view('welcome');
 });
+
 
 # Login to Dashboard
 Route::get('/dashboard', function () {
-
+    # Toaster Helper Function Using
+    flashToastr('success', 'User Login Successfully');
     // return view('dashboard');
     return view('admin.index');
 
@@ -44,7 +40,7 @@ Route::get('/dashboard', function () {
 Route::controller(AdminController::class)->group(function () {
 
     // Route::get('/admin/login','login')->name('admin.login');
-    Route::post('/admin/logout','logout')->name('admin.logout');
+    Route::post('/admin/logout', 'logout')->name('admin.logout');
     //profile
     Route::get('/admin/profile', 'profile')->name('admin.profile');
     //Edit Profile
@@ -60,4 +56,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -23,7 +23,8 @@ class AdminController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
+        # Toaster Helper Function Using
+        flashToastr('info', 'User Has been Logout Successfully Done', 'Logout');
         return redirect('/login');
     }
 
