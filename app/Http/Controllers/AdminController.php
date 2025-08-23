@@ -74,9 +74,9 @@ class AdminController extends Controller
             // $user->profileImage = $filename;
             //file upload in database path added hoby
             $path = 'uploads/profile/' . $filename;
-            $user->profileImage = $path;  
+            $user->profileImage = $path;
         }
-        
+
         $user->save();
 
         //update 
@@ -89,22 +89,24 @@ class AdminController extends Controller
 
 
         # Toaster Helper Function Using
-        flashToastr('success', 'Profile Has been Successfully Updated','Profile Updated');
+        flashToastr('success', 'Profile Has been Successfully Updated', 'Profile Updated');
         return redirect()->route('admin.profile');
     }
 
     # ChangePassword
 
-    public function ChangePassword(){
+    public function ChangePassword()
+    {
         return view('admin.auth.change-password');
     }
 
     # UpdatePassword
 
-    public function UpdatePassword(Request $request){
+    public function UpdatePassword(Request $request)
+    {
         $validate = $request->validate([
-            'old_password' =>'required',
-            'new_password' =>'required',
+            'old_password' => 'required',
+            'new_password' => 'required',
             'confirm_password' => 'required|same:new_password',
         ]);
 
@@ -113,20 +115,26 @@ class AdminController extends Controller
         $HashPassword = Auth::user()->password;
 
         // Check password,Request Password
-        if(Hash::check($request->old_password, $HashPassword)){
+        if (Hash::check($request->old_password, $HashPassword)) {
             $user = User::find(Auth::id());
             $user->password = Hash::make($request->new_password);
             $user->save();
 
-            session()->flash('message','Password Updated Successfully');
-            return redirect()->back();
+            // session()->flash('message','Password Updated Successfully');
+            flashToastr('success', 'Password Updated Successfully', 'Password Updated');
+            return redirect()->route('admin.change.password');
+
+            // return redirect()->back();
             //return redirect login page
             // return redirect('login)->back();
 
 
-        }else{
-            session()->flash('message', 'Old Password is not Match');
-            return redirect()->back();
+        } else {
+            // session()->flash('message', 'Old Password is not Match');
+            flashToastr('error', 'Old Password is not Match', 'Password Error');
+
+            // return redirect()->back();
+            return redirect()->route('admin.change.password');
         }
 
 

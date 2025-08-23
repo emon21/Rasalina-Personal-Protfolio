@@ -59,10 +59,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div
-                            class="card-header bg-success border-primary d-flex justify-content-between align-items-center">
-                            <h4 class="pt-1">Edit Profile</h4>
-                            <a href="{{ route('admin.profile') }}" class="btn btn-outline-dark">Profile</a>
+                            class="card-header bg-transparent border-bottom border-2 border-success d-flex justify-content-between align-items-center">
+                            <h5 class="my-0 text-success text-bold"><i class="mdi mdi-bullseye-arrow me-1"></i>Edit Profile
+                            </h5>
+                            <a href="{{ route('admin.profile') }}" class="btn btn-outline-success">Profile</a>
                         </div>
+
                         <div class="card-body">
                             <form action="{{ route('admin.update.profile') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -97,7 +99,6 @@
                                         <div class="" id="preview-container"
                                             style="position: relative; display: block; width:340px; height: 215px;">
                                             <img id="preview"
-                                            
                                                 @if ($UserInfo->profileImage) src="{{ asset($UserInfo->profileImage) }}" 
                                             @else src="{{ asset('uploads') }}/no_image.jpg" @endif
                                                 alt="Preview Image" width="240"
@@ -114,7 +115,7 @@
                                 <div class="row ">
                                     <div class="col-sm-2"></div>
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                                        <button type="submit" class="btn btn-success">Update Profile</button>
                                     </div>
                                 </div>
                                 <!-- end row -->

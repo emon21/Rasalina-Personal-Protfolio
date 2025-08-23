@@ -11,7 +11,7 @@
 
             <!-- start page title -->
 
-            <x-page-header :title="'Dashboard'" :breadcrumbs="[['label' => 'Home', 'url' => route('dashboard')], ['label' => 'Dashboard', 'url' => null]]" />
+            {{-- <x-page-header :title="'Dashboard'" :breadcrumbs="[['label' => 'Home', 'url' => route('dashboard')], ['label' => 'Dashboard', 'url' => null]]" /> --}}
 
             <!-- end page title -->
 

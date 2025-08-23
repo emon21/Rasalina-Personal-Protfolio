@@ -51,10 +51,12 @@
                                     Email : <label for="email">{{ $UserInfo->email }}</label>
                                 </div>
                             </div>
-
-                            <div class="form-group mt-3">
-                                <a href="{{ route('admin.edit.profile') }}" class="btn btn-rounded btn-info">Edit
+                            <hr>
+                            <div class="form-group mt-1 d-flex gap-2">
+                                <a href="{{ route('admin.edit.profile') }}" class="btn btn-success">Edit
                                     Profile</a>
+                                <a href="{{ route('admin.change.password') }}" class="btn btn-success">Change
+                                    Password</a>
                             </div>
 
                         </div>
@@ -66,5 +68,4 @@
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-
 @endsection
