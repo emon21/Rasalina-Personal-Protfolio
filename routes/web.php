@@ -47,6 +47,12 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/admin/edit/profile', 'EditProfile')->name('admin.edit.profile');
     //Update Profile
     Route::put('/admin/update/profile', 'UpdateProfile')->name('admin.update.profile');
+
+
+    Route::get('/admin/change.password', 'ChangePassword')->name('admin.change.password');
+    Route::put('admin.update.password', 'UpdatePassword')->name('admin.update.password');
+
+
 });
 
 

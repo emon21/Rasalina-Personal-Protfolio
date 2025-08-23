@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use ToastrHelper;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use ToastrHelper;
 
 class AdminController extends Controller
 {
@@ -71,12 +72,11 @@ class AdminController extends Controller
             $file->move(public_path('uploads/profile'), $filename);
             // only file upload no foldername in database
             // $user->profileImage = $filename;
-            //file upload in database path added hobe
+            //file upload in database path added hoby
             $path = 'uploads/profile/' . $filename;
-            $user->profileImage = $path;
-            // $user->save();
+            $user->profileImage = $path;  
         }
-
+        
         $user->save();
 
         //update 
@@ -90,6 +90,55 @@ class AdminController extends Controller
 
         # Toaster Helper Function Using
         flashToastr('success', 'Profile Has been Successfully Updated','Profile Updated');
+        return redirect()->route('admin.profile');
+    }
+
+    # ChangePassword
+
+    public function ChangePassword(){
+        return view('admin.auth.change-password');
+    }
+
+    # UpdatePassword
+
+    public function UpdatePassword(Request $request){
+        $validate = $request->validate([
+            'old_password' =>'required',
+            'new_password' =>'required',
+            'confirm_password' => 'required|same:new_password',
+        ]);
+
+        // $user = Auth::user();
+
+        $HashPassword = Auth::user()->password;
+
+        // Check password,Request Password
+        if(Hash::check($request->old_password, $HashPassword)){
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+
+            session()->flash('message','Password Updated Successfully');
+            return redirect()->back();
+            //return redirect login page
+            // return redirect('login)->back();
+
+
+        }else{
+            session()->flash('message', 'Old Password is not Match');
+            return redirect()->back();
+        }
+
+
+        #old Password
+
+        # New Password
+
+        # COnfirm Password
+
+
+        # Toaster Helper Function Using
+        flashToastr('success', 'Profile Has been Successfully Updated', 'Profile Updated');
         return redirect()->route('admin.profile');
     }
 }

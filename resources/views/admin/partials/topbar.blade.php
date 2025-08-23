@@ -251,7 +251,6 @@
                      <img class="rounded-circle header-profile-user"
                          @if (Auth::user()->profileImage == null) src="{{ asset('uploads') }}/no_image.jpg"
                             @else
-
                             src="{{ asset(Auth::user()->profileImage) }}" @endif
                          alt="Header Avatar" width="250">
                      <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }}</span>
@@ -262,8 +261,8 @@
                      <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
                              class="ri-user-line align-middle me-1"></i>
                          Profile</a>
-                     <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle me-1"></i> My
-                         Wallet</a>
+                     <a class="dropdown-item" href="{{ route('admin.change.password') }}"><i class="ri-wallet-2-line align-middle me-1"></i>
+                         Change Password</a>
                      <a class="dropdown-item d-block" href="#"><span
                              class="badge bg-success float-end mt-1">11</span><i
                              class="ri-settings-2-line align-middle me-1"></i> Settings</a>
