@@ -25,7 +25,7 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
         # Toaster Helper Function Using
-        flashToastr('info', 'User Has been Logout Successfully Done', 'Logout');
+        flashToastr('success', 'User Has been Logout Successfully Done');
         return redirect('/login');
     }
 

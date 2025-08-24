@@ -17,8 +17,13 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+# Frontend Route
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend/index');
 });
 
 
@@ -54,6 +59,7 @@ Route::controller(AdminController::class)->group(function () {
 
 
 });
+
 
 
 Route::middleware('auth')->group(function () {
