@@ -3,29 +3,36 @@
          <div class="d-flex">
              <!-- LOGO -->
              <div class="navbar-brand-box">
-                 <a href="{{ route('dashboard') }}" class="logo logo-dark">
+                 {{--   <a href="{{ route('dashboard') }}" class="logo logo-dark">
                      <span class="logo-sm">
                          <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="logo-sm" height="22">
                      </span>
                      <span class="logo-lg">
                          <img src="{{ asset('backend') }}/assets/images/logo-dark.png" alt="logo-dark" height="20">
                      </span>
-                 </a>
+                 </a> --}}
 
                  <a href="{{ route('dashboard') }}" class="logo logo-light">
                      <span class="logo-sm">
                          <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="logo-sm-light" height="22">
                      </span>
+
                      <span class="logo-lg">
                          <img src="{{ asset('backend') }}/assets/images/logo-light.png" alt="logo-light" height="20">
                      </span>
                  </a>
+
              </div>
 
              <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect"
                  id="vertical-menu-btn">
                  <i class="ri-menu-2-line align-middle"></i>
              </button>
+
+              <a href="{{ url('/') }}" target="_blank" class="btn header-item waves-effect d-flex align-items-center gap-1">
+                     <i class="fas fa-globe"></i> <span>Website</span>
+                 </a>
+            
 
              <!-- App Search-->
              <form class="app-search d-none d-lg-block">
@@ -105,8 +112,7 @@
                          <div class="row g-0">
                              <div class="col">
                                  <a class="dropdown-icon-item" href="#">
-                                     <img src="{{ asset('backend') }}/assets/images/brands/github.png"
-                                         alt="Github">
+                                     <img src="{{ asset('backend') }}/assets/images/brands/github.png" alt="Github">
                                      <span>GitHub</span>
                                  </a>
                              </div>
@@ -261,7 +267,8 @@
                      <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
                              class="ri-user-line align-middle me-1"></i>
                          Profile</a>
-                     <a class="dropdown-item" href="{{ route('admin.change.password') }}"><i class="ri-wallet-2-line align-middle me-1"></i>
+                     <a class="dropdown-item" href="{{ route('admin.change.password') }}"><i
+                             class="ri-wallet-2-line align-middle me-1"></i>
                          Change Password</a>
                      <a class="dropdown-item d-block" href="#"><span
                              class="badge bg-success float-end mt-1">11</span><i
