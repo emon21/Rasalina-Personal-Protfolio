@@ -3,7 +3,7 @@
     <div data-simplebar class="h-100">
 
         <!-- User details -->
-        <div class="user-profile text-center mt-3">
+        <div class="mt-3 text-center user-profile">
             <div class="">
                 <img @if (Auth::user()->profileImage == null) src="{{ asset('uploads') }}/no_image.jpg"
                             @else
@@ -11,8 +11,8 @@
                     alt="" class="avatar-md rounded-circle" width="240">
             </div>
             <div class="mt-3">
-                <h4 class="font-size-16 mb-1">Hi, {{ Auth::user()->name }}</h4>
-                <span class="text-muted"><i class="ri-record-circle-line align-middle font-size-14 text-success"></i>
+                <h4 class="mb-1 font-size-16">Hi, {{ Auth::user()->name }}</h4>
+                <span class="text-muted"><i class="align-middle ri-record-circle-line font-size-14 text-success"></i>
                     Online</span>
             </div>
         </div>
@@ -34,6 +34,12 @@
                     <a href="{{ route('home.slider') }}" class=" waves-effect">
                         <i class="ri-calendar-2-line"></i>
                         <span>Home Slider</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('about.page') }}" class=" waves-effect">
+                        <i class="ri-calendar-2-line"></i>
+                        <span>About Page</span>
                     </a>
                 </li>
 

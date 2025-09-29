@@ -1,3 +1,8 @@
+@php
+
+    $about = App\Models\About::first();
+@endphp
+
 <section id="aboutSection" class="about">
     <div class="container">
         <div class="row align-items-center">
@@ -19,8 +24,7 @@
                             alt="Illustrator">
                     </li>
                     <li>
-                        <img class="light" src="{{ asset('frontend') }}/assets/img/icons/hotjar_light.png"
-                            alt="Hotjar">
+                        <img class="light" src="{{ asset('frontend') }}/assets/img/icons/hotjar_light.png" alt="Hotjar">
                         <img class="dark" src="{{ asset('frontend') }}/assets/img/icons/hotjar.png" alt="Hotjar">
                     </li>
                     <li>
@@ -31,12 +35,10 @@
                     <li>
                         <img class="light" src="{{ asset('frontend') }}/assets/img/icons/photoshop_light.png"
                             alt="Photoshop">
-                        <img class="dark" src="{{ asset('frontend') }}/assets/img/icons/photoshop.png"
-                            alt="Photoshop">
+                        <img class="dark" src="{{ asset('frontend') }}/assets/img/icons/photoshop.png" alt="Photoshop">
                     </li>
                     <li>
-                        <img class="light" src="{{ asset('frontend') }}/assets/img/icons/figma_light.png"
-                            alt="Figma">
+                        <img class="light" src="{{ asset('frontend') }}/assets/img/icons/figma_light.png" alt="Figma">
                         <img class="dark" src="{{ asset('frontend') }}/assets/img/icons/figma.png" alt="Figma">
                     </li>
                 </ul>
@@ -45,20 +47,17 @@
                 <div class="about__content">
                     <div class="section__title">
                         <span class="sub-title">01 - About me</span>
-                        <h2 class="title">I have transform your ideas into remarkable digital products</h2>
+                        <h2 class="title">{{ $about->title }}</h2>
                     </div>
                     <div class="about__exp">
                         <div class="about__exp__icon">
                             <img src="{{ asset('frontend') }}/assets/img/icons/about_icon.png" alt="">
                         </div>
                         <div class="about__exp__content">
-                            <p>20+ Years Experience In this game, Means <br> Product Designing</p>
+                            <p>{{ $about->short_title }}</p>
                         </div>
                     </div>
-                    <p class="desc">I love to work in User Experience & User Interface designing. Because I
-                        love to solve the design problem and find easy and better solutions to solve it. I
-                        always try my best to make good user interface with the best user experience. I have
-                        been working as a UX Designer</p>
+                    <p class="desc">{{$about->short_description}}</p>
                     <a href="about.html" class="btn">Download my resume</a>
                 </div>
             </div>

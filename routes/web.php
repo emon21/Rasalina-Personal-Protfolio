@@ -4,9 +4,10 @@
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\home\AboutController;
+use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Frontend\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,10 @@ use App\Http\Controllers\ProfileController;
 # Frontend Route
 Route::get('/', function () {
     return view('frontend/index');
-});
+})->name('website');
 
 Route::get('frontend/banner', [FrontendController::class, 'banner'])->name('banner');
-
+Route::get('frontend/about', [FrontendController::class, 'about'])->name('about');
 
 # Login to Dashboard
 Route::get('/dashboard', function () {
@@ -87,6 +88,17 @@ Route::controller(HomeSliderController::class)->group(function () {
     // Route::post('update/slider', 'UpdateSlider')->name('update.slider');
     // Route::get('delete/slider/{id}', 'DeleteSlider')->name('delete.slider');
 
+});
+
+
+# About Page All Route
+Route::controller(AboutController::class)->group(function () {
+    
+    //Route List
+    Route::get('about/page','about')->name('about.page');
+    //update about
+    Route::put('update/about/{id}', 'AboutUpdate')->name('update.about');
+    
 });
 
 
