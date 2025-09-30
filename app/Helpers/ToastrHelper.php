@@ -10,7 +10,8 @@ if (!function_exists('flashToastr')) {
             "closeButton"   => true,
             "progressBar"   => true,
             "timeOut"       => 3000,
-            "positionClass" => "toast-top-right"
+            "positionClass" => "toast-top-right",
+           
         ];
 
         // কাস্টম options এর সাথে merge
@@ -45,6 +46,28 @@ if (!function_exists('renderToastr')) {
             ";
         }
         return '';
+    }
+
+    if(!function_exists('deleteConfirm')){
+        function deleteConfirm(){
+            return view('admin.partials.deleteConfirm');
+
+            if(Session::has('success')){
+                $success = Session::get('success');
+
+                $type    = $success['type'];
+                $message = $success['message'];
+                $title   = $success['title'] ?? '';
+                $options = json_encode($success['options']);
+
+                return "
+                
+               
+                ";
+
+            }
+
+        }
     }
 }
 

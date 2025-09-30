@@ -42,6 +42,18 @@
                         <span>About Page</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('about.multi.image') }}" class=" waves-effect">
+                        <i class="ri-calendar-2-line"></i>
+                        <span>About Multi Image</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="{{ route('all.multi.image') }}" class=" waves-effect">
+                        <i class="ri-calendar-2-line"></i>
+                        <span>All Multi Image</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

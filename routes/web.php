@@ -98,8 +98,48 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('about/page','about')->name('about.page');
     //update about
     Route::put('update/about/{id}', 'AboutUpdate')->name('update.about');
+
+    // about Multi Image
+    Route::get('about/multi/image', 'AboutMultiImage')->name('about.multi.image');
+    // Route::get('about/multi/image', ' MultiImage')->name('about.multi.image');
+
+
+    Route::get('all/multi/image', 'AllMultiImage')->name('all.multi.image');
+    Route::post('store/multi/image', 'StoreMultiImage')->name('store.multi.image');
+
+    Route::get('edit/multi/image/{edit}', 'EditMultiImage')->name('edit.multi-image');
+    Route::put('update/multi/image/{update}', 'UpdateMultiImage')->name('update.multi-image');
+
+  //  Route::get('delete/multi/image/{delete}', 'DeleteMultiImage')->name('delete.multi-image');
+
+    Route::delete('delete/multi/image/{delete}', 'DeleteMultiImage')->name('delete.multi-image');
+
+
     
 });
+
+# about prefix and group set
+// Route::prefix('about')->group(function () {
+//     Route::get('us', function () {
+//         return 'About Us';
+//     });
+//     Route::get('me', function () {
+//         return 'About Me';
+//     });
+// });
+
+# about* Route
+// Route::get('about/us', function () {
+//     return 'About Us';
+// });
+// Route::get('about/me', function () {
+//     return 'About Me';
+// });
+
+# about.* Route
+// Route::get('about.*', function () {
+//     return 'About Us';
+// });
 
 
 
