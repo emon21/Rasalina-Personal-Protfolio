@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\home\AboutController;
+use App\Http\Controllers\home\PortfolioController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Frontend\FrontendController;
 
@@ -60,7 +61,6 @@ Route::controller(AdminController::class)->group(function () {
 
     Route::get('/admin/change.password', 'ChangePassword')->name('admin.change.password');
     Route::put('admin.update.password', 'UpdatePassword')->name('admin.update.password');
-
 });
 
 Route::middleware('auth')->group(function () {
@@ -93,9 +93,9 @@ Route::controller(HomeSliderController::class)->group(function () {
 
 # About Page All Route
 Route::controller(AboutController::class)->group(function () {
-    
+
     //Route List
-    Route::get('about/page','about')->name('about.page');
+    Route::get('about/page', 'about')->name('about.page');
     //update about
     Route::put('update/about/{id}', 'AboutUpdate')->name('update.about');
 
@@ -110,13 +110,11 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('edit/multi/image/{edit}', 'EditMultiImage')->name('edit.multi-image');
     Route::put('update/multi/image/{update}', 'UpdateMultiImage')->name('update.multi-image');
 
-  //  Route::get('delete/multi/image/{delete}', 'DeleteMultiImage')->name('delete.multi-image');
+    //  Route::get('delete/multi/image/{delete}', 'DeleteMultiImage')->name('delete.multi-image');
 
     Route::delete('delete/multi/image/{delete}', 'DeleteMultiImage')->name('delete.multi-image');
-
-
-    
 });
+
 
 # about prefix and group set
 // Route::prefix('about')->group(function () {
@@ -142,6 +140,37 @@ Route::controller(AboutController::class)->group(function () {
 // });
 
 
+# portfolio route group
+
+// Route::prefix('portfolio')->group(function () {
+//     Route::get('us', function () {
+//         return 'Portfolio Us';
+//     });
+//     Route::get('me', function () {
+//         return 'Portfolio Me';
+//     });
+// });
+
+Route::controller(PortfolioController::class)->group(function () {
+
+    Route::get('all/portfolio', 'AllPortfolio')->name('all.portfolio');
+
+    Route::get('add/portfolio', 'AddPortfolio')->name('add.portfolio');
+    Route::post('store/portfolio', 'StorePortfolio')->name('store.portfolio');
+
+    Route::get('edit/portfolio/{id}', 'EditPortfolio')->name('edit.portfolio');
+    Route::put('update/portfolio/{id}', 'UpdatePortfolio')->name('update.portfolio');
+
+    Route::delete('delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
+   
+    // Route::get('/portfolio/details/{portfolio:portfolio_name}',  'PortfolioDetails')->name('portfolio.details');
+    Route::get('/portfolio/details/{id}',  'PortfolioDetails')->name('portfolio.details');
+});
+
+
+// Route::controller(FrontendController::class)->group(function () {
+
+// });
 
 
 require __DIR__ . '/auth.php';

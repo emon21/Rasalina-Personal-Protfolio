@@ -5,10 +5,9 @@
         <!-- User details -->
         <div class="mt-3 text-center user-profile">
             <div class="">
-                <img @if (Auth::user()->profileImage == null) src="{{ asset('uploads') }}/no_image.jpg"
-                            @else
-                            src="{{ asset(Auth::user()->profileImage) }}" @endif
-                    alt="" class="avatar-md rounded-circle" width="240">
+                <img @if (Auth::user()->profileImage == null) src="{{ asset('uploads') }}/no_image.jpg" @else
+                src="{{ asset(Auth::user()->profileImage) }}" @endif alt="" class="avatar-md rounded-circle"
+                    width="240">
             </div>
             <div class="mt-3">
                 <h4 class="mb-1 font-size-16">Hi, {{ Auth::user()->name }}</h4>
@@ -36,24 +35,56 @@
                         <span>Home Slider</span>
                     </a>
                 </li>
+
                 <li>
-                    <a href="{{ route('about.page') }}" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
-                        <span>About Page</span>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-layout-3-line"></i>
+                        <span>About Page Setup</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('about.page') }}" class="waves-effect d-flex align-top">
+                                <i class="dripicons-minus"></i>
+                                <span>About Page</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('all.multi.image') }}" class="waves-effect d-flex align-top">
+                                <i class="dripicons-minus"></i>
+                                <span>All Multi Image</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about.multi.image') }}" class="waves-effect d-flex align-top">
+                                <i class="dripicons-minus"></i>
+                                <span>About Multi Image</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
                 <li>
-                    <a href="{{ route('about.multi.image') }}" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
-                        <span>About Multi Image</span>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-layout-3-line"></i>
+                        <span>Portfolio Page Setup</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('all.portfolio') }}" class="waves-effect d-flex align-top">
+                                <i class="dripicons-minus"></i>
+                                <span>All Portfolio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('add.portfolio') }}" class="waves-effect d-flex align-top">
+                                <i class="dripicons-minus"></i>
+                                <span>Add Portfolio</span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
-                 <li>
-                    <a href="{{ route('all.multi.image') }}" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
-                        <span>All Multi Image</span>
-                    </a>
-                </li>
+
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
