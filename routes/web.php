@@ -9,6 +9,7 @@ use App\Http\Controllers\home\AboutController;
 use App\Http\Controllers\home\PortfolioController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\home\BlogCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,7 @@ Route::controller(HomeSliderController::class)->group(function () {
     Route::get('home/slider/edit/{slider}', 'edit')->name('home.slider.edit');
     Route::put('home/slider/update/{slider}', 'update')->name('home.slider.update');
     Route::get('home/slider/delete/{slider}', 'destroy')->name('home.slider.delete');
+    
     // Route::delete('/home/slider/delete/{id}', HomeSliderController::class)->name('home.slider.delete');
 
     // Route::post('upload/slider', 'UploadSlider')->name('upload.slider');
@@ -162,15 +164,70 @@ Route::controller(PortfolioController::class)->group(function () {
     Route::put('update/portfolio/{id}', 'UpdatePortfolio')->name('update.portfolio');
 
     Route::delete('delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
-   
+
     // Route::get('/portfolio/details/{portfolio:portfolio_name}',  'PortfolioDetails')->name('portfolio.details');
     Route::get('/portfolio/details/{id}',  'PortfolioDetails')->name('portfolio.details');
 });
 
 
-// Route::controller(FrontendController::class)->group(function () {
+// Blog Category all Route
+Route::controller(BlogCategoryController::class)->group(function () {
 
+    # category Route
+    // Route::get('all/category', 'AllCategory')->name('all.category');
+    // Route::get('add/category', 'AddCategory')->name('add.category');
+    // Route::post('store/category', 'StoreCategory')->name('store.category');
+    // Route::get('edit/category/{id}', 'EditCategory')->name('edit.category');
+    // Route::put('update/category/{id}', 'UpdateCategory')->name('update.category');
+    // Route::delete('delete/category/{id}', 'DeleteCategory')->name('delete.category');
+
+
+    Route::get('all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+    Route::post('store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+    Route::get('edit/blog/category/{id}', 'EditBlogCategory')->name('edit.blog.category');
+    Route::put('update/blog/category/{id}', 'UpdateBlogCategory')->name('update.blog.category');
+    Route::delete('delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+
+    # blog route
+    Route::get('all/blog', 'AllBlog')->name('all.blog');
+    Route::get('add/blog', 'AddBlog')->name('add.blog');
+    Route::post('store/blog', 'StoreBlog')->name('store.blog');
+    Route::get('edit/blog/{id}', 'EditBlog')->name('edit.blog');
+    Route::put('update/blog/{id}', 'UpdateBlog')->name('update.blog');
+    Route::delete('delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
+});
+
+
+Route::controller(FrontendController::class)->group(function () {
+
+    # Portfolio 
+    Route::get('portfolio', 'Portfolio')->name('portfolio');
+    Route::get('portfolio/details/{portfolio}', 'PortfolioDetails')->name('portfolio.details');
+
+});
+
+# route group
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+// Route::prefix('frontend')->group(function () {
+//     Route::get('/dashboard', 'AdminController@dashboard'); // Accessible at /admin/dashboard
+//     Route::get('/settings', 'AdminController@settings');   // Accessible at /admin/settings
 // });
+
+
+Route::prefix('frontend')->group(function () {
+    // Route::get('/users', 'AdminController@users')->name('users'); // Route name: admin.users
+    // Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
+    Route::get('portfolio', [FrontendController::class,'Portfolio'])->name('portfolio');
+   
+    // Route::get('portfolio/details/{slug}', [FrontendController::class, 'PortfolioDetails'] )->name('portfolio.details');
+
+
+    Route::get('portfolio/details/{portfolio:portfolio_title}', [FrontendController::class, 'PortfolioDetails'])
+        ->name('portfolio.details');
+});
 
 
 require __DIR__ . '/auth.php';

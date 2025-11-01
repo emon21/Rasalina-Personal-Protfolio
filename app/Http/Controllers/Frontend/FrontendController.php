@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\About;
+use App\Models\Portfolio;
 use App\Models\HomeSlider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -64,15 +65,21 @@ class FrontendController extends Controller
     }
 
     # Frontend Portfolio
-    public function portfolio()
+    public function Portfolio()
     {
-        return view('frontend.portfolio');
+         $portfolios = Portfolio::latest()->get();
+        return view('frontend.portfolio.index',['portfolios' => $portfolios]);
     }
 
     # Frontend Portfolio Details
-    public function portfolio_details()
+    public function PortfolioDetails(Portfolio $portfolio)
     {
-        return view('frontend.portfolio_details');
+        // $portfolio = Portfolio::find($portfolio);
+
+        // $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
+        // return $portfolio;
+
+        return view('frontend.portfolio.portfolio-details',['portfolio' => $portfolio]);
     }
 
     # Frontend Pricing

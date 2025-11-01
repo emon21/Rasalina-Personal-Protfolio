@@ -43,19 +43,19 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('about.page') }}" class="waves-effect d-flex align-top">
+                            <a href="{{ route('about.page') }}" class="align-top waves-effect d-flex">
                                 <i class="dripicons-minus"></i>
                                 <span>About Page</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('all.multi.image') }}" class="waves-effect d-flex align-top">
+                            <a href="{{ route('all.multi.image') }}" class="align-top waves-effect d-flex">
                                 <i class="dripicons-minus"></i>
                                 <span>All Multi Image</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('about.multi.image') }}" class="waves-effect d-flex align-top">
+                            <a href="{{ route('about.multi.image') }}" class="align-top waves-effect d-flex">
                                 <i class="dripicons-minus"></i>
                                 <span>About Multi Image</span>
                             </a>
@@ -70,13 +70,13 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('all.portfolio') }}" class="waves-effect d-flex align-top">
+                            <a href="{{ route('all.portfolio') }}" class="align-top waves-effect d-flex">
                                 <i class="dripicons-minus"></i>
                                 <span>All Portfolio</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('add.portfolio') }}" class="waves-effect d-flex align-top">
+                            <a href="{{ route('add.portfolio') }}" class="align-top waves-effect d-flex">
                                 <i class="dripicons-minus"></i>
                                 <span>Add Portfolio</span>
                             </a>
@@ -85,6 +85,40 @@
                     </ul>
                 </li>
 
+                <!-- Blog Page Setup -->
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-layout-3-line"></i>
+                        <span>Blog Page Setup</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#" class="align-top waves-effect d-flex">
+                                <i class="dripicons-minus"></i>
+                                <span>All Blog</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="align-top waves-effect d-flex">
+                                <i class="dripicons-minus"></i>
+                                <span>Add Blog</span>
+                            </a>
+                        </li>
+                        <hr>
+                        <li>
+                            <a href="{{ route('all.blog.category') }}" class="align-top waves-effect d-flex">
+                                <i class="dripicons-minus"></i>
+                                <span>Blog Category</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="align-top waves-effect d-flex">
+                                <i class="dripicons-minus"></i>
+                                <span>Blog Tag</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

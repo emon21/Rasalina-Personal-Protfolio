@@ -14,13 +14,19 @@
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{ route('website') }}">Home</a></li>
+                                    <li class="{{ Route::is('website') ? 'active' : '' }}">
+                                        <a href="{{ route('website') }}">Home</a>
+                                    </li>
                                     <li><a href="{{ route('about') }}">About</a></li>
                                     <li><a href="#">Services</a></li>
+                                    <li class="{{ Route::is('portfolio') ? 'active' : '' }}">
+                                        <a href="{{ route('portfolio') }}">Portfolio</a>
+                                    </li>
+                                    
                                     <li class="menu-item-has-children"><a href="#">Portfolio</a>
                                         <ul class="sub-menu">
-                                            <li><a href="#">Portfolio</a></li>
-                                            <li><a href="#">Portfolio Details</a></li>
+                                            <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
+                                            {{-- <li><a href="{{ route('portfolio.details') }}">Portfolio Details</a></li> --}}
                                         </ul>
                                     </li>
                                     <li class="menu-item-has-children"><a href="#">Our Blog</a>
