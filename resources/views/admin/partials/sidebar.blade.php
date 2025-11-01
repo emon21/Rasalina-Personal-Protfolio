@@ -105,6 +105,7 @@
                             </a>
                         </li>
                         <hr>
+                        {{-- blog-category route --}}
                         <li>
                             <a href="{{ route('all.blog.category') }}" class="align-top waves-effect d-flex">
                                 <i class="dripicons-minus"></i>
@@ -119,6 +120,15 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- Category Menu -->
+                <li>
+                    <a href="{{ route('admin.category.index') }}" class="align-top waves-effect d-flex">
+                        <i class="ri-layout-3-line"></i>
+                        <span>Category</span>
+                    </a>
+                </li>
+                <!-- Category Menu end -->
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

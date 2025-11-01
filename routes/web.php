@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\home\AboutController;
+use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\home\PortfolioController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -81,7 +83,7 @@ Route::controller(HomeSliderController::class)->group(function () {
     Route::get('home/slider/edit/{slider}', 'edit')->name('home.slider.edit');
     Route::put('home/slider/update/{slider}', 'update')->name('home.slider.update');
     Route::get('home/slider/delete/{slider}', 'destroy')->name('home.slider.delete');
-    
+
     // Route::delete('/home/slider/delete/{id}', HomeSliderController::class)->name('home.slider.delete');
 
     // Route::post('upload/slider', 'UploadSlider')->name('upload.slider');
@@ -183,6 +185,7 @@ Route::controller(BlogCategoryController::class)->group(function () {
 
 
     Route::get('all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+    Route::get('add/blog/category', 'AddBlogCategory')->name('add.blog.category');
     Route::post('store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
     Route::get('edit/blog/category/{id}', 'EditBlogCategory')->name('edit.blog.category');
     Route::put('update/blog/category/{id}', 'UpdateBlogCategory')->name('update.blog.category');
@@ -224,10 +227,78 @@ Route::prefix('frontend')->group(function () {
    
     // Route::get('portfolio/details/{slug}', [FrontendController::class, 'PortfolioDetails'] )->name('portfolio.details');
 
-
     Route::get('portfolio/details/{portfolio:portfolio_title}', [FrontendController::class, 'PortfolioDetails'])
         ->name('portfolio.details');
 });
+
+# ================== Backend Route List ================== #
+
+# route group prefix
+
+// Route::prefix('admin')->group(function () {
+//     Route::get('/dashboard', 'AdminController@dashboard'); // Accessible at /admin/dashboard
+//     Route::get('/settings', 'AdminController@settings');   // Accessible at /admin/settings
+// });
+
+// Route::prefix('admin')->name('admin.')->middleware(['auth', 'is_admin']) // তুমি চাইলে middleware বাদ দিতে পারো
+//     ->group(function () {
+
+// 🧭 Dashboard
+// Route::get('/dashboard', [DashboardController::class, 'index'])
+//     ->name('dashboard');
+
+// // 👥 Users
+// Route::prefix('users')->name('users.')->group(function () {
+//     Route::get('/', [UserController::class, 'index'])->name('index');
+//     Route::get('/create', [UserController::class, 'create'])->name('create');
+//     Route::post('/', [UserController::class, 'store'])->name('store');
+//     Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+//     Route::put('/{id}', [UserController::class, 'update'])->name('update');
+//     Route::delete('/{id}', [UserController::class, 'destroy'])->name('destroy');
+// });
+
+// // 🛍️ Products
+// Route::prefix('products')->name('products.')->group(function () {
+//     Route::get('/', [ProductController::class, 'index'])->name('index');
+//     Route::get('/create', [ProductController::class, 'create'])->name('create');
+//     Route::post('/', [ProductController::class, 'store'])->name('store');
+//     Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('edit');
+//     Route::put('/{id}', [ProductController::class, 'update'])->name('update');
+//     Route::delete('/{id}', [ProductController::class, 'destroy'])->name('destroy');
+// });
+
+// // ⚙️ Settings
+// Route::prefix('settings')->name('settings.')->group(function () {
+//     Route::get('/', [SettingController::class, 'index'])->name('index');
+//     Route::post('/update', [SettingController::class, 'update'])->name('update');
+// });
+
+// });
+
+
+// Route::prefix('admin')->group(function () {
+
+//     Route::get('/users', function () {
+//         // Matches The "/admin/users" URL
+//     });
+
+// });
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    // Route::get('/users', function () {
+    //     // Route assigned name "admin.users"...
+    // })->name('users');
+
+    # Blog Category Route
+    // Route::get('blog-category',[BlogController::class,'index'])->name('blog-category');
+
+    # Category Route
+    Route::resource('category',CategoryController::class);
+    
+});
+
 
 
 require __DIR__ . '/auth.php';
