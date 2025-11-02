@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             SliderSeeder::class,
             AboutSeeder::class,
             PortfolioSeeder::class,
+            CategorySeeder::class,
             // Add other seeders here as needed
             // Example: ProductSeeder::class,
             // CategorySeeder::class,

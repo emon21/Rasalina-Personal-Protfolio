@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\home\AboutController;
-use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\home\PortfolioController;
 use App\Http\Controllers\Home\HomeSliderController;
@@ -46,8 +46,8 @@ Route::get('/dashboard', function () {
     // logout
     // Route::post('logout',[AdminController::class,'logout'])->name('admin.logout');
 
-
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 # Admin all Route
 
@@ -71,6 +71,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 # Backend Feature Route List
 
@@ -235,10 +237,10 @@ Route::prefix('frontend')->group(function () {
 
 # route group prefix
 
-// Route::prefix('admin')->group(function () {
-//     Route::get('/dashboard', 'AdminController@dashboard'); // Accessible at /admin/dashboard
-//     Route::get('/settings', 'AdminController@settings');   // Accessible at /admin/settings
-// });
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', 'AdminController@dashboard'); // Accessible at /admin/dashboard
+    Route::get('/settings', 'AdminController@settings');   // Accessible at /admin/settings
+});
 
 // Route::prefix('admin')->name('admin.')->middleware(['auth', 'is_admin']) // তুমি চাইলে middleware বাদ দিতে পারো
 //     ->group(function () {
@@ -276,14 +278,6 @@ Route::prefix('frontend')->group(function () {
 // });
 
 
-// Route::prefix('admin')->group(function () {
-
-//     Route::get('/users', function () {
-//         // Matches The "/admin/users" URL
-//     });
-
-// });
-
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -296,6 +290,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     # Category Route
     Route::resource('category',CategoryController::class);
+
+    # Blog Route
+    Route::resource('blog',BlogController::class);
+
+    // # Portfolio Route
+    // Route::resource('portfolio',PortfolioController::class);
+
+    // # Blog Category Route
+    // Route::resource('blog-category',BlogCategoryController::class);
+    
+
+
+
     
 });
 

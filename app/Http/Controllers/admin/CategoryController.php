@@ -13,7 +13,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
+        // $categories = Category::latest()->get();
+        $categories = Category::withCount('blogs')
+        ->orderByDesc('blogs_count') // blog count বেশি যেগুলোর, আগে আসবে
+        ->orderBy('id', 'asc')       // এরপর serial অনুযায়ী
+        ->get();
         return view('admin/blog/category/index',['categories' => $categories ]);
     }
 

@@ -125,10 +125,19 @@
                 <li>
                     <a href="{{ route('admin.category.index') }}" class="align-top waves-effect d-flex">
                         <i class="ri-layout-3-line"></i>
-                        <span>Category</span>
+                        <span>Category ( {{ $category->count() }} )</span>
                     </a>
                 </li>
                 <!-- Category Menu end -->
+                
+                <!-- Blog Menu -->
+                <li>
+                    <a href="{{ route('admin.blog.index') }}" class="align-top waves-effect d-flex">
+                        <i class="ri-layout-3-line"></i>
+                        <span>Blogs ( {{ \App\Models\Blog::count() }} )</span>
+                    </a>
+                </li>
+                <!-- Blog Menu end -->
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

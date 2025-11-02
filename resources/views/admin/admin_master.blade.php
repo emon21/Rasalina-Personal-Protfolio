@@ -42,12 +42,24 @@
 
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css">
+
     <!-- font-awesome Css -->
     {{--
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" /> --}}
 
     {{--
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" /> --}}
+<style>
+    .bootstrap-tagsinput .tag {
+        margin-right: 2px;
+        color: #b70000;
+        font-weight: 700px;
+    }
+</style>
+    
 
 </head>
 
@@ -149,9 +161,13 @@
     {!! renderToastr() !!}
 
 
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.11/sweetalert.min.js"></script> --}}
-    
+    {{--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.11/sweetalert.min.js"></script> --}}
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+
 
     <script>
 
@@ -280,36 +296,36 @@
         //         });
         //     }
 
-   function deleteConfirmation(event) {
-    // Prevent the form from submitting immediately
-    event.preventDefault();
+        function deleteConfirmation(event) {
+            // Prevent the form from submitting immediately
+            event.preventDefault();
 
-    // Get the form that triggered this function
-    const form = event.target.closest('form');
+            // Get the form that triggered this function
+            const form = event.target.closest('form');
 
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Submit the form if user confirmed
-            form.submit();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Submit the form if user confirmed
+                    form.submit();
 
-            Swal.fire(
-                'Deleted!',
-                'Your image has been deleted.',
-                'success'
-            );
+                    Swal.fire(
+                        'Deleted!',
+                        'Your image has been deleted.',
+                        'success'
+                    );
+                }
+            });
         }
-    });
-}
-    
+
 
     </script>
     {{--

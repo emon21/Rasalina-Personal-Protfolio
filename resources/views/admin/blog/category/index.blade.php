@@ -51,7 +51,7 @@
                                                         {{ $loop->iteration }}
                                                     </td>
                                                     <td>
-                                                        {{ $category->name }}
+                                                        {{ $category->name }} ({{ $category['blogs']->count() }})
                                                     </td>
 
 
