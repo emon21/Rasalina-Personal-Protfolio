@@ -209,6 +209,18 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('portfolio', 'Portfolio')->name('portfolio');
     Route::get('portfolio/details/{portfolio}', 'PortfolioDetails')->name('portfolio.details');
 
+    Route::get('blog', 'blog')->name('blog');
+    Route::get('blog/details/{blog}', 'BlogDetails')->name('blog-details');
+
+    Route::get('category/post/{id}', 'CategoryPost')->name('category.post');
+
+
+    # blog category
+    // Route::get('blog/category/{blog_category}', 'BlogCategory')->name('blog.category');
+    // Route::get('blog/category/{blog_category}/{blog}', 'BlogCategoryDetails')->name('blog.category.details');
+
+
+
 });
 
 # route group
@@ -237,10 +249,10 @@ Route::prefix('frontend')->group(function () {
 
 # route group prefix
 
-Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', 'AdminController@dashboard'); // Accessible at /admin/dashboard
-    Route::get('/settings', 'AdminController@settings');   // Accessible at /admin/settings
-});
+// Route::prefix('admin')->group(function () {
+//     Route::get('/dashboard', 'AdminController@dashboard'); // Accessible at /admin/dashboard
+//     Route::get('/settings', 'AdminController@settings');   // Accessible at /admin/settings
+// });
 
 // Route::prefix('admin')->name('admin.')->middleware(['auth', 'is_admin']) // তুমি চাইলে middleware বাদ দিতে পারো
 //     ->group(function () {

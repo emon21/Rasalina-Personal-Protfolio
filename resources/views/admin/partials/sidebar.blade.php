@@ -125,7 +125,7 @@
                 <li>
                     <a href="{{ route('admin.category.index') }}" class="align-top waves-effect d-flex">
                         <i class="ri-layout-3-line"></i>
-                        <span>Category ( {{ $category->count() }} )</span>
+                        <span>Category ( {{\App\Models\Category::count() }} )</span>
                     </a>
                 </li>
                 <!-- Category Menu end -->

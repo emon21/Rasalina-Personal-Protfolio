@@ -31,7 +31,7 @@
                                     </li>
                                     <li class="menu-item-has-children"><a href="#">Our Blog</a>
                                         <ul class="sub-menu">
-                                            <li><a href="#">Our News</a></li>
+                                            <li><a href="{{route('blog')}}">Our News</a></li>
                                             <li><a href="#">News Details</a></li>
                                         </ul>
                                     </li>

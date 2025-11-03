@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Blog;
 use App\Models\About;
+use App\Models\Category;
 use App\Models\Portfolio;
 use App\Models\HomeSlider;
 use Illuminate\Http\Request;
@@ -14,24 +16,23 @@ class FrontendController extends Controller
     public function index()
     {
         $sliders = HomeSlider::latest()->get();
-        return view('frontend.index',compact('sliders'));
+        return view('frontend.index', compact('sliders'));
     }
 
     # Frontend Banner
-    public function banner(){
+    public function banner()
+    {
 
         $slider = HomeSlider::first();
         // return $slider;
-        return view('frontend.components.banner-area',compact('slider'));
-
-
+        return view('frontend.components.banner-area', compact('slider'));
     }
 
     # Frontend About
     public function about()
     {
-        $about =About::first();
-        return view('frontend.about',compact('about'));
+        $about = About::first();
+        return view('frontend.about', compact('about'));
     }
 
     # Frontend Contact
@@ -43,13 +44,136 @@ class FrontendController extends Controller
     # Frontend Blog
     public function blog()
     {
-        return view('frontend.blog');
+        $blogs = Blog::latest()->take(5)->get();
+        $recentBlogs = Blog::latest()->take(5)->get();
+        $categories = Category::withCount('blogs')
+            ->orderBy('blogs_count', 'desc')->get();
+
+        // return $categories;
+
+        return view('frontend.blog.index', [
+            'categories' => $categories,
+            'blogs' => $blogs,
+            'recentBlogs' => $recentBlogs
+        ]);
     }
 
     # Frontend Blog Details
-    public function blog_details()
+    public function BlogDetails(Blog $blog)
     {
-        return view('frontend.blog_details');
+     
+        $recentBlogs = Blog::latest()->take(5)->get();
+        // $categories = Category::withCount('blogs')->get();
+        $categories = Category::withCount('blogs')
+            ->orderBy('blogs_count', 'desc')
+            ->get();
+
+
+        return view('frontend.blog.blog-details', [
+            'blog' => $blog
+        ], compact('categories', 'recentBlogs'));
+
+        // return view('frontend.blog.blog-details',[
+        //     'blog' =>$blog
+
+    }
+
+
+    function CategoryPost($id) {
+
+        $category = Category::where('name', $id)
+        ->orWhere('id', $id)
+        ->firstOrFail();
+
+        // $post = Blog::where('category_id',$id)->get();
+
+        $posts = $category->blogs()
+              ->with('category')
+              ->latest()
+              ->paginate(12);
+
+        // return view('frontend.blog.blog-category',compact('post'));
+
+        return view('frontend.blog.blog-category', compact('category', 'posts'));
+    }
+
+    # BlogCategory
+    public function BlogCategory($blog_category)
+    {
+        // $recentBlogs = Blog::latest()->take(5)->get();
+
+        // $categories = Category::withCount('blogs')
+        //     ->orderBy('blogs_count', 'desc')
+        //     ->get();
+
+        // // return view('frontend.blog.blog-category',[
+        // //     'category' => $category,
+        // //     'categories' => $categories,
+        // //     'recentBlogs' => $recentBlogs
+        // // ]);
+
+        // $category = Category::all();
+
+
+
+        // $category = Category::where('name', $blog_category)
+        //     ->orWhere('id', $blog_category)
+        //     ->firstOrFail();
+
+        $posts = Blog::
+            // ->with( 'category')
+            where('category_id', $blog_category)
+            // ->latest()
+            // ->paginate(12);
+            ->get();
+
+        // if ($posts && $posts->count() > 0) {
+        //     // পোস্ট আছে, শুধু সেইগুলো দেখাও
+        //     foreach ($posts as $post) {
+        //         echo $post->blog_title . "<br>";
+        //     }
+        // } else {
+        //     // পোস্ট নাই, সব ডাটা দেখাও
+        //     $allPosts = Blog::all();
+        //     foreach ($allPosts as $post) {
+        //         echo $post->blog_title . "<br>";
+        //     }
+        // }
+
+        if ($posts && $posts->count() > 0) {
+            return $posts;
+            // foreach ($posts as $post) {
+            //     echo $post->blog_title . "<br>";
+            // }
+        } else {
+
+            $allPosts = Blog::all();
+            // return $allPosts;
+            // foreach ($allPosts as $post) {
+            //     // echo $post->blog_title . "<br>";
+            //     return $post;
+            // }
+        }
+
+        // return $posts;
+
+
+        return view('frontend.blog.blog-category', compact('category', 'posts'));
+    }
+
+    # BlogCategoryDetails
+    public function BlogCategoryDetails(Category $category, Blog $blog)
+    {
+        $recentBlogs = Blog::latest()->take(5)->get();
+        $categories = Category::withCount('blogs')
+            ->orderBy('blogs_count', 'desc')
+            ->get();
+        return view('frontend.blog.blog-category-details', [
+            'category' => $category,
+            'blog' => $blog,
+            'categories' => $categories,
+            'recentBlogs' => $recentBlogs
+        ]);
     }
 
     # Frontend Services
@@ -67,8 +191,8 @@ class FrontendController extends Controller
     # Frontend Portfolio
     public function Portfolio()
     {
-         $portfolios = Portfolio::latest()->get();
-        return view('frontend.portfolio.index',['portfolios' => $portfolios]);
+        $portfolios = Portfolio::latest()->get();
+        return view('frontend.portfolio.index', ['portfolios' => $portfolios]);
     }
 
     # Frontend Portfolio Details
@@ -79,7 +203,7 @@ class FrontendController extends Controller
         // $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
         // return $portfolio;
 
-        return view('frontend.portfolio.portfolio-details',['portfolio' => $portfolio]);
+        return view('frontend.portfolio.portfolio-details', ['portfolio' => $portfolio]);
     }
 
     # Frontend Pricing
@@ -159,6 +283,4 @@ class FrontendController extends Controller
     {
         return view('frontend.terms_conditions');
     }
-
-
 }

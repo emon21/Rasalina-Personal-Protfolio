@@ -43,7 +43,7 @@
                                                 <th width="75">Title</th>
                                                 <th width="75">Picture</th>
                                                 <th width="75">Tags</th>
-                                                <th width="75">Description</th>
+                                                {{-- <th width="75">Description</th> --}}
                                                 <th width="25">Action</th>
                                             </tr>
                                         </thead>
@@ -80,7 +80,7 @@
                                                             $blog->blog_tags); }}</span></td> --}}
                                                     {{-- <td>{{ json_decode($blog->blog_tags,true) }}</td> --}}
 
-                                                    <td>{{ $blog->blog_description }}</td>
+                                                    {{-- <td>{{ $blog->blog_description }}</td> --}}
                                                     <td>
                                                         <a href="{{ route('admin.blog.edit', $blog) }}" class="btn btn-primary"
                                                             title="Edit Data"><i class="mdi mdi-pencil"></i>
