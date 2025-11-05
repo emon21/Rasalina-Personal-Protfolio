@@ -9,6 +9,7 @@ use App\Models\Portfolio;
 use App\Models\HomeSlider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 
 class FrontendController extends Controller
 {
@@ -68,9 +69,17 @@ class FrontendController extends Controller
             ->orderBy('blogs_count', 'desc')
             ->get();
 
+            // $blog = Blog::with('comments')->get();
+
+        // $post = Blog::with('comments.user.replies.user')->findOrFail($id);
+       $comment = Blog::with('comments')->find($blog);
+
+            // return $comment;
+
 
         return view('frontend.blog.blog-details', [
-            'blog' => $blog
+            'blog' => $blog,
+            'comment' => $comment
         ], compact('categories', 'recentBlogs'));
 
         // return view('frontend.blog.blog-details',[

@@ -4,9 +4,10 @@
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\home\AboutController;
 use App\Http\Controllers\admin\BlogController;
+use App\Http\Controllers\home\AboutController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\home\PortfolioController;
 use App\Http\Controllers\Home\HomeSliderController;
@@ -311,13 +312,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     // # Blog Category Route
     // Route::resource('blog-category',BlogCategoryController::class);
-    
 
 
+    Route::get('/comment', [CommentController::class, 'index'])->name('comment');
 
-    
+    Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
+
 });
 
+
+Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
+
+Route::get('comment-reply-remove/{comment}', [CommentController::class, 'CommentRemove'])->name('comment-reply-remove');
 
 
 require __DIR__ . '/auth.php';

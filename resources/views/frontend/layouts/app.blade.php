@@ -72,6 +72,44 @@
     <script src="{{ asset('frontend') }}/assets/js/plugins.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/main.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+    {!! renderToastr() !!}
+
+    <script>
+        function deleteConfirmation(event) {
+            // Prevent the form from submitting immediately
+            event.preventDefault();
+
+            // Get the form that triggered this function
+            const form = event.target.closest('form');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Submit the form if user confirmed
+                    form.submit();
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Your image has been deleted.',
+                        'success'
+                    );
+                }
+            });
+        }
+    </script>
+
     <!-- Custom Js Code  Using Push -->
     @stack('script')
 </body>

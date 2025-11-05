@@ -1,4 +1,9 @@
 @props(['categories' => [], 'recentBlogs' => []])
+
+@php
+$comments = App\Models\Comment::latest()->take(6)->get();
+@endphp
+
 <div class="col-lg-4">
    <aside class="blog__sidebar">
       <div class="widget">
@@ -52,7 +57,7 @@
          <h4 class="widget-title">Categories</h4>
          <ul class="sidebar__cat">
             @forelse($categories as $category)
-               <li class="sidebar__cat__item"><a href="{{ route('category.post',$category->id) }}">{{ $category->name }} ( {{ $category->blogs_count }}
+               <li class="sidebar__cat__item"><a href="{{ route('category.post', $category->id) }}">{{ $category->name }} ( {{ $category->blogs_count }}
                      )</a></li>
             @empty
                <li class="list-group-item text-muted">No categories available</li>
@@ -72,24 +77,14 @@
          </ul> --}}
       </div>
       <div class="widget">
-         <h4 class="widget-title">Recent Comment</h4>
+         <h4 class="widget-title">Recent Comment ({{ $comments->count() }})</h4>
          <ul class="sidebar__comment">
-            <li class="sidebar__comment__item">
-               <a href="blog-details.html">Rasalina Sponde</a>
-               <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-            </li>
-            <li class="sidebar__comment__item">
-               <a href="blog-details.html">Rasalina Sponde</a>
-               <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-            </li>
-            <li class="sidebar__comment__item">
-               <a href="blog-details.html">Rasalina Sponde</a>
-               <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-            </li>
-            <li class="sidebar__comment__item">
-               <a href="blog-details.html">Rasalina Sponde</a>
-               <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-            </li>
+            @foreach ($comments as $comment)
+               <li class="sidebar__comment__item">
+                  <a href="blog-details.html">{{ $comment->user->name }}</a>
+                  <p>{{ Str::limit($comment->comment,50) }}</p>
+               </li>
+            @endforeach
          </ul>
       </div>
       <div class="widget">

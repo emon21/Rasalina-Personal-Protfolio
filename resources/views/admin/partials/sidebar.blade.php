@@ -138,6 +138,16 @@
                     </a>
                 </li>
                 <!-- Blog Menu end -->
+                
+                <!-- Comment Menu -->
+                <li>
+                    <a href="{{ route('admin.comment') }}" class="align-top waves-effect d-flex">
+                        <i class="ri-layout-3-line"></i>
+                        {{-- {{ $blog->comments->count() }} --}}
+                        <span>Comment ( {{ App\Models\Comment::with('blog')->count() }} )</span>
+                    </a>
+                </li>
+                <!-- Comment Menu end -->
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
