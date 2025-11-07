@@ -29,6 +29,8 @@ class FileUpload
       return $file_name;
    }
 
+   
+
 
 //    🟢 শুধু ফাইল নাম DB তে সেভ হবে
 // public static function uploadImage($file, $path)

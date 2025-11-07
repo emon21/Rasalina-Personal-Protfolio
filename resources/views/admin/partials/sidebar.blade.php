@@ -150,6 +150,21 @@
                 <!-- Comment Menu end -->
 
                 <li>
+                    <a href="{{ route('admin.partner') }}" class=" waves-effect">
+                        <i class="ri-calendar-2-line"></i>
+                        <span>Partner</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="{{ route('admin.client.index') }}" class=" waves-effect">
+                        <i class="ri-calendar-2-line"></i>
+                        <span>Client</span>
+                    </a>
+                </li>
+                
+
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
                         <span>Email</span>

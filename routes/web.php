@@ -5,9 +5,11 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\home\AboutController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\home\PortfolioController;
 use App\Http\Controllers\Home\HomeSliderController;
@@ -74,7 +76,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
 # Backend Feature Route List
 
 Route::controller(HomeSliderController::class)->group(function () {
@@ -123,29 +124,6 @@ Route::controller(AboutController::class)->group(function () {
 });
 
 
-# about prefix and group set
-// Route::prefix('about')->group(function () {
-//     Route::get('us', function () {
-//         return 'About Us';
-//     });
-//     Route::get('me', function () {
-//         return 'About Me';
-//     });
-// });
-
-# about* Route
-// Route::get('about/us', function () {
-//     return 'About Us';
-// });
-// Route::get('about/me', function () {
-//     return 'About Me';
-// });
-
-# about.* Route
-// Route::get('about.*', function () {
-//     return 'About Us';
-// });
-
 
 # portfolio route group
 
@@ -153,10 +131,10 @@ Route::controller(AboutController::class)->group(function () {
 //     Route::get('us', function () {
 //         return 'Portfolio Us';
 //     });
-//     Route::get('me', function () {
-//         return 'Portfolio Me';
-//     });
+
+
 // });
+
 
 Route::controller(PortfolioController::class)->group(function () {
 
@@ -238,8 +216,8 @@ Route::controller(FrontendController::class)->group(function () {
 Route::prefix('frontend')->group(function () {
     // Route::get('/users', 'AdminController@users')->name('users'); // Route name: admin.users
     // Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
-    Route::get('portfolio', [FrontendController::class,'Portfolio'])->name('portfolio');
-   
+    Route::get('portfolio', [FrontendController::class, 'Portfolio'])->name('portfolio');
+
     // Route::get('portfolio/details/{slug}', [FrontendController::class, 'PortfolioDetails'] )->name('portfolio.details');
 
     Route::get('portfolio/details/{portfolio:portfolio_title}', [FrontendController::class, 'PortfolioDetails'])
@@ -294,18 +272,15 @@ Route::prefix('frontend')->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    // Route::get('/users', function () {
-    //     // Route assigned name "admin.users"...
-    // })->name('users');
 
     # Blog Category Route
     // Route::get('blog-category',[BlogController::class,'index'])->name('blog-category');
 
     # Category Route
-    Route::resource('category',CategoryController::class);
+    Route::resource('category', CategoryController::class);
 
     # Blog Route
-    Route::resource('blog',BlogController::class);
+    Route::resource('blog', BlogController::class);
 
     // # Portfolio Route
     // Route::resource('portfolio',PortfolioController::class);
@@ -313,11 +288,47 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // # Blog Category Route
     // Route::resource('blog-category',BlogCategoryController::class);
 
-
+    # Comment Route
     Route::get('/comment', [CommentController::class, 'index'])->name('comment');
 
     Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
 
+    # Partner Route
+
+
+
+    Route::get('partner', [PartnerController::class, 'index'])->name('partner');
+
+    Route::get('partner/create', [PartnerController::class, 'create'])->name('partner.create');
+
+
+    // # er moddy vul kothai
+    // Route::get(uri: 'user/demo', [PartnerController::class, 'demoUser']); //vul asy
+
+    // Route::get(uri: 'demo', [PartnerController::class, 'demo']); //vul asy
+
+    // Route::get(uri: 'demo', action: [PartnerController::class, 'demo']); //sothik
+
+
+    // Route::get('demo', [PartnerController::class, 'demo']);
+
+    Route::get('partner/create', [PartnerController::class, 'create'])->name('partner.create');
+
+    Route::post('partner/store', [PartnerController::class, 'store'])->name('partner.store');
+
+    // extra route to delete single image (AJAX)
+    Route::delete('partner-images/{image}', [PartnerController::class, 'destroyImage'])->name('partner-images.destroy');
+
+    # image delete and update route
+    Route::delete('/partner/image/{id}', [PartnerController::class, 'deleteImage'])->name('partner.image.delete');
+    Route::post('/partner/image/update/{id}', [PartnerController::class, 'updateImage'])->name('partner.image.update');
+
+    Route::get('partner/{partner}', [PartnerController::class, 'edit'])->name('partner.edit');
+    Route::put('partner/{partner}', [PartnerController::class, 'update'])->name('partner.update');
+
+
+    # Client 
+    Route::resource('client', ClientController::class);
 });
 
 

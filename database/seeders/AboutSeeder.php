@@ -13,7 +13,7 @@ class AboutSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
         $about = [
             'title' => fake()->sentence(10),
             'short_title' => fake()->sentence(20),
@@ -21,7 +21,6 @@ class AboutSeeder extends Seeder
             'long_description' => fake()->sentence(25),
             'about_image' => 'https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg',
         ];
-
 
         # delete old slider
         About::truncate();

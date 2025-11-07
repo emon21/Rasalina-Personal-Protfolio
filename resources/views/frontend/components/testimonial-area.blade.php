@@ -1,3 +1,10 @@
+@php
+
+    $clients = App\Models\Client::with('user')->get();
+    // $partner = App\Models\Partner::with('images')->first();
+
+@endphp
+
 <section class="testimonial">
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -19,34 +26,21 @@
                             <h2 class="title">Happy clients feedback</h2>
                         </div>
                         <div class="testimonial__active">
-                            <div class="testimonial__item">
-                                <div class="testimonial__icon">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                                <div class="testimonial__content">
-                                    <p>We are motivated by the satisfaction of our clients. Put your trust in us
-                                        &share in our H.Spond Asset Management is made up of a team of expert,
-                                        committed and experienced people with a passion for financial markets. Our
-                                        goal is to achieve continuous.</p>
-                                    <div class="testimonial__avatar">
-                                        <span>Rasalina De Wiliamson</span>
+
+                            @foreach($clients as $client)
+                                <div class="testimonial__item">
+                                    <div class="testimonial__icon">
+                                        <i class="fas fa-quote-left"></i>
+                                    </div>
+                                    <div class="testimonial__content">
+                                        <p>{{ $client->message }}</p>
+                                        <div class="testimonial__avatar">
+                                            <span>{{ $client->user->name ?? 'N/A' }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="testimonial__item">
-                                <div class="testimonial__icon">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                                <div class="testimonial__content">
-                                    <p>We are motivated by the satisfaction of our clients. Put your trust in us
-                                        &share in our H.Spond Asset Management is made up of a team of expert,
-                                        committed and experienced people with a passion for financial markets. Our
-                                        goal is to achieve continuous.</p>
-                                    <div class="testimonial__avatar">
-                                        <span>Rasalina De Wiliamson</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                            
                         </div>
                         <div class="testimonial__arrow"></div>
                     </div>

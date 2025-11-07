@@ -72,7 +72,7 @@ class AboutController extends Controller
         return view('admin.about.multiImage');
     }
     
-    public function StoreMultiImage(Request $request){
+    public function StoreMultiImage(Request $request,About $about){
 
 
         // ✅ Validate images
@@ -80,29 +80,53 @@ class AboutController extends Controller
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $image = $request->File('multiImage');
-        $uploadedFiles = [];
 
-        # multiple image upload
-        foreach($image AS $multiImage){
-            // $filename = time() . uniqid().'.' . $multiImage->getClientOriginalExtension();
-            $filename = rand(100000,999999).'.' . $multiImage->getClientOriginalExtension();
-            $multiImage->move(public_path('uploads/multi'), $filename);
-            // $path = 'uploads/multi/' . $filename;
-            $path = 'uploads/multi/'.$filename;
-            $uploadedFiles[] = $filename;
+        # Image Upload
+        if ($request->hasFile('aboutImage')) {
 
-            MultiImage::create([
-                'multiImage' => $path
-            ]);
+            // $image = $request->file('image');
+            // $file = $image->move(public_path('uploads'), $image->getClientOriginalExtension());
+            // 'profileImage'->$file
+
+            //old image delete
+            if (File::exists($about->about_image)) {
+                File::delete($about->about_image);
+            }
+
+            $images = $request->file('images');
+            $uploadedFiles = [];
+            
+            # Multiple Image Upload
+            foreach ($images as $image) {
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('uploads/about'), $filename);
+                // only file upload no foldername in database
+                $path = 'uploads/about/' . $filename;
+                // $uploadedFiles[] = $path;
+                $uploadedFiles[] = $filename;
+
+                MultiImage::create([
+                    'about_id' => $about->id,
+                    'multiImage' => $path,
+                ]);
+            }
+
+            //uploads image
+            // $file = $request->file('aboutImage');
+            // $filename = time() . '.' . $file->getClientOriginalExtension();
+            // $file->move(public_path('uploads/about'), $filename);
+            // // only file upload no foldername in database
+            // $path = 'uploads/about/' . $filename;
+            // $about->about_image = $path;
+
         }
 
-
+        $about->save();
 
         # Toaster Helper Function Using
         flashToastr('success', 'Multiple Image Created Successfully !!', 'Store Image');
         // return redirect()->route('about.multi.image');
-        return back()->with('files', $uploadedFiles);
+        return redirect()->route('all.multi.image');
 
         
     } // End Method
