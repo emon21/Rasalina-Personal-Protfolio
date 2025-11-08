@@ -147,8 +147,8 @@
                         <span>Comment ( {{ App\Models\Comment::with('blog')->count() }} )</span>
                     </a>
                 </li>
-                <!-- Comment Menu end -->
 
+                <!-- Comment Menu end -->
                 <li>
                     <a href="{{ route('admin.partner') }}" class=" waves-effect">
                         <i class="ri-calendar-2-line"></i>
@@ -160,6 +160,13 @@
                     <a href="{{ route('admin.client.index') }}" class=" waves-effect">
                         <i class="ri-calendar-2-line"></i>
                         <span>Client</span>
+                    </a>
+                </li>
+                
+                 <li>
+                    <a href="{{ route('admin.service.index') }}" class=" waves-effect">
+                        <i class="ri-calendar-2-line"></i>
+                        <span>Service</span>
                     </a>
                 </li>
                 

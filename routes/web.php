@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\home\AboutController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\home\PortfolioController;
 use App\Http\Controllers\Home\HomeSliderController;
@@ -329,12 +330,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     # Client 
     Route::resource('client', ClientController::class);
+
+    # Service Route
+    Route::resource('service',ServiceController::class);
+    
 });
 
 
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
 
 Route::get('comment-reply-remove/{comment}', [CommentController::class, 'CommentRemove'])->name('comment-reply-remove');
+
+ # services-details
+Route::get('services-details/{service}',[ServiceController::class,'ServicesDetails'])->name('services-details');
+
+
 
 
 require __DIR__ . '/auth.php';
