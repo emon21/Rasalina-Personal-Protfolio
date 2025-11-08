@@ -16,6 +16,7 @@ use App\Http\Controllers\home\PortfolioController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\home\BlogCategoryController;
+use App\Http\Controllers\admin\WebsiteSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -333,6 +334,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     # Service Route
     Route::resource('service',ServiceController::class);
+
+    # website Setting Route
+    Route::get('website-setting/footer',[WebsiteSettingController::class,'FooterInfo'])->name('website-setting.footer');
+    Route::put('website-setting/footer/{footer}',[WebsiteSettingController::class, 'FooterInfoUpdate'])->name('website-setting.footer.update');
     
 });
 

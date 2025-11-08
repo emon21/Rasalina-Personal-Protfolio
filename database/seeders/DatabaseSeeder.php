@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ClientSeeder::class,
             ServiceSeeder::class,
+            FooterSeeder::class,
             // Add other seeders here as needed
             // Example: ProductSeeder::class,
             // CategorySeeder::class,
