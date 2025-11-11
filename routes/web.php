@@ -129,15 +129,6 @@ Route::controller(AboutController::class)->group(function () {
 
 # portfolio route group
 
-// Route::prefix('portfolio')->group(function () {
-//     Route::get('us', function () {
-//         return 'Portfolio Us';
-//     });
-
-
-// });
-
-
 Route::controller(PortfolioController::class)->group(function () {
 
     Route::get('all/portfolio', 'AllPortfolio')->name('all.portfolio');
@@ -155,54 +146,6 @@ Route::controller(PortfolioController::class)->group(function () {
 });
 
 
-// Blog Category all Route
-Route::controller(BlogCategoryController::class)->group(function () {
-
-    # category Route
-    // Route::get('all/category', 'AllCategory')->name('all.category');
-    // Route::get('add/category', 'AddCategory')->name('add.category');
-    // Route::post('store/category', 'StoreCategory')->name('store.category');
-    // Route::get('edit/category/{id}', 'EditCategory')->name('edit.category');
-    // Route::put('update/category/{id}', 'UpdateCategory')->name('update.category');
-    // Route::delete('delete/category/{id}', 'DeleteCategory')->name('delete.category');
-
-
-    Route::get('all/blog/category', 'AllBlogCategory')->name('all.blog.category');
-    Route::get('add/blog/category', 'AddBlogCategory')->name('add.blog.category');
-    Route::post('store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
-    Route::get('edit/blog/category/{id}', 'EditBlogCategory')->name('edit.blog.category');
-    Route::put('update/blog/category/{id}', 'UpdateBlogCategory')->name('update.blog.category');
-    Route::delete('delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
-
-    # blog route
-    Route::get('all/blog', 'AllBlog')->name('all.blog');
-    Route::get('add/blog', 'AddBlog')->name('add.blog');
-    Route::post('store/blog', 'StoreBlog')->name('store.blog');
-    Route::get('edit/blog/{id}', 'EditBlog')->name('edit.blog');
-    Route::put('update/blog/{id}', 'UpdateBlog')->name('update.blog');
-    Route::delete('delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
-});
-
-
-Route::controller(FrontendController::class)->group(function () {
-
-    # Portfolio 
-    Route::get('portfolio', 'Portfolio')->name('portfolio');
-    Route::get('portfolio/details/{portfolio}', 'PortfolioDetails')->name('portfolio.details');
-
-    Route::get('blog', 'blog')->name('blog');
-    Route::get('blog/details/{blog}', 'BlogDetails')->name('blog-details');
-
-    Route::get('category/post/{id}', 'CategoryPost')->name('category.post');
-
-
-    # blog category
-    // Route::get('blog/category/{blog_category}', 'BlogCategory')->name('blog.category');
-    // Route::get('blog/category/{blog_category}/{blog}', 'BlogCategoryDetails')->name('blog.category.details');
-
-
-
-});
 
 # route group
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -215,16 +158,7 @@ Route::controller(FrontendController::class)->group(function () {
 // });
 
 
-Route::prefix('frontend')->group(function () {
-    // Route::get('/users', 'AdminController@users')->name('users'); // Route name: admin.users
-    // Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
-    Route::get('portfolio', [FrontendController::class, 'Portfolio'])->name('portfolio');
 
-    // Route::get('portfolio/details/{slug}', [FrontendController::class, 'PortfolioDetails'] )->name('portfolio.details');
-
-    Route::get('portfolio/details/{portfolio:portfolio_title}', [FrontendController::class, 'PortfolioDetails'])
-        ->name('portfolio.details');
-});
 
 # ================== Backend Route List ================== #
 
@@ -271,9 +205,7 @@ Route::prefix('frontend')->group(function () {
 // });
 
 
-
 Route::prefix('admin')->name('admin.')->group(function () {
-
 
     # Blog Category Route
     // Route::get('blog-category',[BlogController::class,'index'])->name('blog-category');
@@ -284,7 +216,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     # Blog Route
     Route::resource('blog', BlogController::class);
 
-    // # Portfolio Route
+    # Portfolio Route
     // Route::resource('portfolio',PortfolioController::class);
 
     // # Blog Category Route
@@ -292,15 +224,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     # Comment Route
     Route::get('/comment', [CommentController::class, 'index'])->name('comment');
-
     Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
 
     # Partner Route
-
-
-
     Route::get('partner', [PartnerController::class, 'index'])->name('partner');
-
     Route::get('partner/create', [PartnerController::class, 'create'])->name('partner.create');
 
 
@@ -328,7 +255,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('partner/{partner}', [PartnerController::class, 'edit'])->name('partner.edit');
     Route::put('partner/{partner}', [PartnerController::class, 'update'])->name('partner.update');
 
-
     # Client 
     Route::resource('client', ClientController::class);
 
@@ -338,8 +264,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
     # website Setting Route
     Route::get('website-setting/footer',[WebsiteSettingController::class,'FooterInfo'])->name('website-setting.footer');
     Route::put('website-setting/footer/{footer}',[WebsiteSettingController::class, 'FooterInfoUpdate'])->name('website-setting.footer.update');
+
+    # Contact Route 
+
+    Route::get('contact',[WebsiteSettingController::class,'Contact'])->name('contact');
+    Route::get('contact/delete/{contact}',[WebsiteSettingController::class,'DeleteMessage'])->name('contact.delete');
     
 });
+
+
+# Frontend Route Group and prefix
+
+
+// Route::get('blog-category/{blog_category}', [BlogController::class, 'BlogCategory'])->name('blog-category');
+// Route::get('blog-details/{blog}', [BlogController::class, 'BlogDetails'])->name('blog-details');
 
 
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
@@ -350,6 +288,39 @@ Route::get('comment-reply-remove/{comment}', [CommentController::class, 'Comment
 Route::get('services-details/{service}',[ServiceController::class,'ServicesDetails'])->name('services-details');
 
 
+
+# 
+Route::prefix('frontend')->group(function () {
+    // Route::get('/users', 'AdminController@users')->name('users'); // Route name: admin.users
+    // Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
+    Route::get('portfolio', [FrontendController::class, 'Portfolio'])->name('portfolio');
+
+    // Route::get('portfolio/details/{slug}', [FrontendController::class, 'PortfolioDetails'] )->name('portfolio.details');
+
+    Route::get('portfolio/details/{portfolio:portfolio_title}', [FrontendController::class, 'PortfolioDetails'])
+        ->name('portfolio.details');
+});
+
+
+Route::controller(FrontendController::class)->group(function () {
+
+    # Portfolio 
+    Route::get('portfolio', 'Portfolio')->name('portfolio');
+    Route::get('portfolio/details/{portfolio}', 'PortfolioDetails')->name('portfolio.details');
+
+    Route::get('blog', 'blog')->name('blog');
+    Route::get('blog/details/{blog}', 'BlogDetails')->name('blog-details');
+
+    Route::get('category/post/{id}', 'CategoryPost')->name('category.post');
+
+    # blog category
+    // Route::get('blog/category/{blog_category}', 'BlogCategory')->name('blog.category');
+    // Route::get('blog/category/{blog_category}/{blog}', 'BlogCategoryDetails')->name('blog.category.details');
+
+    Route::get('contact', 'Contact')->name('contact');
+    Route::post('contact/store', 'ContactStore')->name('contact.store');
+
+});
 
 
 require __DIR__ . '/auth.php';

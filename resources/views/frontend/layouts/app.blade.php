@@ -29,6 +29,11 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/default.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css">
+
+     <!-- Toastr Css -->
+
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
 </head>
 
 <body>

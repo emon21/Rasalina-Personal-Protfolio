@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Blog;
 use App\Models\About;
+use App\Models\Comment;
+use App\Models\Contact;
 use App\Models\Category;
 use App\Models\Portfolio;
 use App\Models\HomeSlider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
 
 class FrontendController extends Controller
 {
@@ -41,6 +42,24 @@ class FrontendController extends Controller
     {
         return view('frontend.contact');
     }
+    
+    public function ContactStore(Request $request,Contact $contact)
+    {
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->phone = $request->phone;
+        $contact->message = $request->message;
+        $contact->save();
+
+        $notification = array(
+            'message' => 'Your Message Submited Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
 
     # Frontend Blog
     public function blog()
@@ -83,7 +102,7 @@ class FrontendController extends Controller
         ], compact('categories', 'recentBlogs'));
 
         // return view('frontend.blog.blog-details',[
-        //     'blog' =>$blog
+        // 'blog' =>$blog
 
     }
 
@@ -292,4 +311,7 @@ class FrontendController extends Controller
     {
         return view('frontend.terms_conditions');
     }
+
+
+    
 }

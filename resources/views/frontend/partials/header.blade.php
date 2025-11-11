@@ -35,7 +35,7 @@
                                             <li><a href="#">News Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">contact me</a></li>
+                                    <li><a href="{{ route('contact') }}">contact me</a></li>
                                 </ul>
                             </div>
                             <div class="header__btn d-none d-md-block">

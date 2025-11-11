@@ -79,7 +79,6 @@
                                  </div>
                               </div>
 
-
                               <!-- Social Facebook Link -->
                               <div class="mb-3 row">
                                  <label for="footer_social_facebook" class="col-sm-2 col-form-label">Social Facebook Link</label>

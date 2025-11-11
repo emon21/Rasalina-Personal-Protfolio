@@ -21,207 +21,164 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
-
                 <li>
                     <a href="{{ route('dashboard') }}" class="waves-effect">
-                        <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
+                        <i class="ri-dashboard-line"></i><span
+                            class="px-2 py-1 badge rounded-pill bg-success float-end">3</span>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('home.slider') }}" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
+                    <a href="{{ route('home.slider') }}" class="waves-effect">
+                        <i class="ri-slideshow-3-line"></i>
                         <span>Home Slider</span>
                     </a>
                 </li>
 
+                <!-- About Page Setup -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-layout-3-line"></i>
+                        <i class="ri-user-3-line"></i>
                         <span>About Page Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('about.page') }}" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>About Page</span>
+                            <a href="{{ route('about.page') }}">
+                                <i class="ri-file-list-3-line"></i> <span>About Page</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('all.multi.image') }}" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>All Multi Image</span>
+                            <a href="{{ route('all.multi.image') }}">
+                                <i class="ri-image-2-line"></i> <span>All Multi Image</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('about.multi.image') }}" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>About Multi Image</span>
+                            <a href="{{ route('about.multi.image') }}">
+                                <i class="ri-image-add-line"></i> <span>About Multi Image</span>
                             </a>
                         </li>
                     </ul>
                 </li>
 
+                <!-- Portfolio -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-layout-3-line"></i>
+                        <i class="ri-briefcase-line"></i>
                         <span>Portfolio Page Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('all.portfolio') }}" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>All Portfolio</span>
+                            <a href="{{ route('all.portfolio') }}">
+                                <i class="ri-gallery-line"></i> <span>All Portfolio</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('add.portfolio') }}" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>Add Portfolio</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <!-- Blog Page Setup -->
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-layout-3-line"></i>
-                        <span>Blog Page Setup</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="#" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>All Blog</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>Add Blog</span>
-                            </a>
-                        </li>
-                        <hr>
-                        {{-- blog-category route --}}
-                        <li>
-                            <a href="{{ route('all.blog.category') }}" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>Blog Category</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="align-top waves-effect d-flex">
-                                <i class="dripicons-minus"></i>
-                                <span>Blog Tag</span>
+                            <a href="{{ route('add.portfolio') }}">
+                                <i class="ri-add-circle-line"></i> <span>Add Portfolio</span>
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <!-- Category Menu -->
+                <!-- Category -->
                 <li>
-                    <a href="{{ route('admin.category.index') }}" class="align-top waves-effect d-flex">
-                        <i class="ri-layout-3-line"></i>
-                        <span>Category ( {{\App\Models\Category::count() }} )</span>
+                    <a href="{{ route('admin.category.index') }}" class="waves-effect">
+                        <i class="ri-folder-line"></i><span class="px-2 py-1 badge rounded-pill bg-success float-end">{{ \App\Models\Category::count() }}</span>
+                        <span>Category</span>
                     </a>
                 </li>
-                <!-- Category Menu end -->
-                
-                <!-- Blog Menu -->
+                <!-- Blog -->
                 <li>
-                    <a href="{{ route('admin.blog.index') }}" class="align-top waves-effect d-flex">
-                        <i class="ri-layout-3-line"></i>
-                        <span>Blogs ( {{ \App\Models\Blog::count() }} )</span>
-                    </a>
-                </li>
-                <!-- Blog Menu end -->
-                
-                <!-- Comment Menu -->
-                <li>
-                    <a href="{{ route('admin.comment') }}" class="align-top waves-effect d-flex">
-                        <i class="ri-layout-3-line"></i>
-                        {{-- {{ $blog->comments->count() }} --}}
-                        <span>Comment ( {{ App\Models\Comment::with('blog')->count() }} )</span>
+                    <a href="{{ route('admin.blog.index') }}" class="waves-effect">
+                        <i class="ri-article-line"></i><span class="px-2 py-1 badge rounded-pill bg-success float-end">{{ \App\Models\Blog::count() }}</span>
+                        <span>Blogs</span>
                     </a>
                 </li>
 
-                <!-- Comment Menu end -->
+                <!-- Comment -->
                 <li>
-                    <a href="{{ route('admin.partner') }}" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
+                    <a href="{{ route('admin.comment') }}" class="waves-effect">
+                        <i class="ri-chat-3-line"></i>
+                        <span class="px-2 py-1 badge rounded-pill bg-success float-end">{{ App\Models\Comment::with('blog')->count() }}</span>
+                        <span>Comment</span>
+                    </a>
+                </li>
+
+                <!-- Partner -->
+                <li>
+                    <a href="{{ route('admin.partner') }}" class="waves-effect">
+                        <i class="ri-team-line"></i>
                         <span>Partner</span>
                     </a>
                 </li>
-                
+
+                <!-- Client -->
                 <li>
-                    <a href="{{ route('admin.client.index') }}" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
+                    <a href="{{ route('admin.client.index') }}" class="waves-effect">
+                        <i class="ri-user-star-line"></i>
                         <span>Client</span>
                     </a>
                 </li>
-                
-                 <li>
-                    <a href="{{ route('admin.service.index') }}" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
+
+                <!-- Service -->
+                <li>
+                    <a href="{{ route('admin.service.index') }}" class="waves-effect">
+                        <i class="ri-customer-service-2-line"></i><span class="px-2 py-1 badge rounded-pill bg-success float-end">{{ App\Models\Service::count() }}</span>
                         <span>Service</span>
                     </a>
                 </li>
-                
+
+                <!-- Footer -->
                 <li>
-                    <a href="{{ route('admin.website-setting.footer') }}" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
+                    <a href="{{ route('admin.website-setting.footer') }}" class="waves-effect">
+                        <i class="ri-global-line"></i>
                         <span>Footer</span>
                     </a>
                 </li>
-                
 
+                <!-- Contact -->
+                {{-- <li>
+                    <a href="{{ route('admin.contact') }}" class="waves-effect">
+                        <i class="ri-global-line"></i>
+                        <span>Contact</span>
+                    </a>
+                </li> --}}
+
+                <li>
+                    <a href="{{ route('admin.contact') }}" class="waves-effect">
+                        <i class="ri-mail-line"></i><span class="px-2 py-1 badge rounded-pill bg-success float-end">{{ App\Models\Contact::count() }}</span> <!-- or ri-contacts-line -->
+                        <span>Contact</span>
+                    </a>
+                </li>
+
+
+                <!-- Email -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
                         <span>Email</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-read.html">Read Email</a></li>
+                        <li><a href="email-inbox.html"><i class="ri-inbox-archive-line"></i> Inbox</a></li>
+                        <li><a href="email-read.html"><i class="ri-mail-open-line"></i> Read Email</a></li>
                     </ul>
                 </li>
 
+                <!-- Authentication -->
                 <li class="menu-title">Pages</li>
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-account-circle-line"></i>
+                        <i class="ri-shield-user-line"></i>
                         <span>Authentication</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="auth-login.html">Login</a></li>
-                        <li><a href="auth-register.html">Register</a></li>
-                        <li><a href="auth-recoverpw.html">Recover Password</a></li>
-                        <li><a href="auth-lock-screen.html">Lock Screen</a></li>
+                        <li><a href="auth-login.html"><i class="ri-login-circle-line"></i> Login</a></li>
+                        <li><a href="auth-register.html"><i class="ri-user-add-line"></i> Register</a></li>
+                        <li><a href="auth-recoverpw.html"><i class="ri-lock-unlock-line"></i> Recover Password</a></li>
+                        <li><a href="auth-lock-screen.html"><i class="ri-lock-line"></i> Lock Screen</a></li>
                     </ul>
                 </li>
-
-
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-share-line"></i>
-                        <span>Multi Level</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="javascript: void(0);">Level 1.1</a></li>
-                        <li><a href="javascript: void(0);" class="has-arrow">Level 1.2</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="javascript: void(0);">Level 2.1</a></li>
-                                <li><a href="javascript: void(0);">Level 2.2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
             </ul>
         </div>
         <!-- Sidebar -->
