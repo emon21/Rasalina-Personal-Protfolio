@@ -41,12 +41,6 @@
                   @foreach ($portfolios as $portfolio)
                      <button data-filter=".{{ $portfolio->id }}">{{ $portfolio->portfolio_name }}</button>
                   @endforeach
-
-                  {{-- <button class="active" data-filter="*">all</button>
-                  <button data-filter=".cat-one">mobile apps</button>
-                  <button data-filter=".cat-two">website Design</button>
-                  <button data-filter=".cat-three">ui/kit</button>
-                  <button data-filter=".cat-four">Landing page</button> --}}
                </div>
             </div>
          </div>
@@ -57,99 +51,24 @@
                   <div class="row gx-0 align-items-center">
                      <div class="col-lg-6 col-md-10">
                         <div class="portfolio__inner__thumb">
-                           <a href="portfolio-details.html">
-                              <img src="{{ asset($portfolio->portfolio_image) }}" alt="">
+                           <a href="{{ route('portfolio.details',$portfolio->portfolio_title) }}">
+                              {{-- <img src="{{ asset($portfolio->portfolio_image) }}" alt=""> --}}
+                              <img src="{{ ($portfolio->portfolio_image) ? asset($portfolio->portfolio_image) : asset('uploads/no_image.jpg') }}" style="width:620px;height:380px;" alt="{{ $portfolio->portfolio_name }}">
                            </a>
                         </div>
                      </div>
                      <div class="col-lg-6 col-md-10">
                         <div class="portfolio__inner__content">
-                           <h2 class="title"><a href="portfolio-details.html">{{ $portfolio->portfolio_name }}</a></h2>
-                           <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                              alteration in some form, by injected humour, or randomised words which don't look even slightly
-                              believable.</p>
-                           <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything
-                              embarrassing
-                              hidden in the middle of text</p>
+                           <h2 class="title">
+                              <a href="{{ route('portfolio.details',$portfolio->portfolio_title) }}">{{ $portfolio->portfolio_name }}</a>
+                           </h2>
+                           <p>{!! $portfolio->portfolio_description !!}</p>
                            <a href="{{ route('portfolio.details', $portfolio->portfolio_title) }}" class="link">View Case Study</a>
                         </div> 
                      </div>
                   </div>
                </div>
             @endforeach
-            {{--
-            <div class="portfolio__inner__item grid-item cat-one cat-three cat-four">
-               <div class="row gx-0 align-items-center">
-                  <div class="col-lg-6 col-md-10">
-                     <div class="portfolio__inner__thumb">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/portfolio/portfolio__img02.jpg" alt="">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="col-lg-6 col-md-10">
-                     <div class="portfolio__inner__content">
-                        <h2 class="title"><a href="portfolio-details.html">Cryptocurrency web Application</a></h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                           alteration in some form, by injected humour, or randomised words which don't look even slightly
-                           believable.</p>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything
-                           embarrassing
-                           hidden in the middle of text</p>
-                        <a href="portfolio-details.html" class="link">View Case Study</a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="portfolio__inner__item grid-item cat-one cat-four">
-               <div class="row gx-0 align-items-center">
-                  <div class="col-lg-6 col-md-10">
-                     <div class="portfolio__inner__thumb">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/portfolio/portfolio__img03.jpg" alt="">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="col-lg-6 col-md-10">
-                     <div class="portfolio__inner__content">
-                        <h2 class="title"><a href="portfolio-details.html">Making 3d Illustration</a></h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                           alteration in some form, by injected humour, or randomised words which don't look even slightly
-                           believable.</p>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything
-                           embarrassing
-                           hidden in the middle of text</p>
-                        <a href="portfolio-details.html" class="link">View Case Study</a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="portfolio__inner__item grid-item cat-two">
-               <div class="row gx-0 align-items-center">
-                  <div class="col-lg-6 col-md-10">
-                     <div class="portfolio__inner__thumb">
-                        <a href="portfolio-details.html">
-                           <img src="assets/img/portfolio/portfolio__img04.jpg" alt="">
-                        </a>
-                     </div>
-                  </div>
-                  <div class="col-lg-6 col-md-10">
-                     <div class="portfolio__inner__content">
-                        <h2 class="title"><a href="portfolio-details.html">Hilon - Personal Portfolio</a></h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                           alteration in some form, by injected humour, or randomised words which don't look even slightly
-                           believable.</p>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything
-                           embarrassing
-                           hidden in the middle of text</p>
-                        <a href="portfolio-details.html" class="link">View Case Study</a>
-                     </div>
-                  </div>
-               </div>
-            </div> --}}
-
          </div>
 
          <div class="pagination-wrap">

@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\About;
 use App\Models\Comment;
 use App\Models\Contact;
+use App\Models\Service;
 use App\Models\Category;
 use App\Models\Portfolio;
 use App\Models\HomeSlider;
@@ -205,15 +206,16 @@ class FrontendController extends Controller
     }
 
     # Frontend Services
-    public function services()
+    public function Service()
     {
-        return view('frontend.services');
+        $services = Service::latest()->get();
+        return view('frontend/service/index',['services' => $services]);
     }
 
     # Frontend Services Details
-    public function services_details()
+    public function ServicesDetails(Service $service)
     {
-        return view('frontend.services_details');
+        return view('frontend/service/service-details',compact('service'));
     }
 
     # Frontend Portfolio

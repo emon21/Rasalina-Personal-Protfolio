@@ -18,19 +18,22 @@ $services = App\Models\Service::latest()->get();
                 </div>
             </div>
         </div>
-        <div class="row gx-0 services__active">
+        <div class="gap-2 row gx-0 services__active">
             @foreach($services as $service)
                 <div class="col-xl-3">
                     <div class="services__item">
                         <div class="services__thumb">
                             <a href="{{ route('services-details', $service) }}">
-                                <img src="{{ ($service->picture) ? asset('uploads/service/' . $service->picture) : asset('uploads/no_image.jpg') }}" alt="" class="mt-2 rounded img-fluid" width="180" height="80">
+                                <img src="{{ ($service->picture) ? asset('uploads/service/' . $service->picture) : asset('uploads/no_image.jpg') }}" alt="" class="mt-2" width="250" height="250">
                             </a>
                         </div>
                         <div class="services__content">
-                            <h3 class="title"><a href="{{ route('services-details', $service) }}">{{ $service->title }}</a></h3>
-                            <p>{!! $service->short_description !!}</p>
-                            <a href="{{ route('services-details', $service) }}" class="btn border-btn">Read more</a>
+                            <h3 class="title">
+                                <a href="{{ route('services-details', $service->title) }}">
+                                    {{ Str::title(str_replace('-', ' ', $service->title)) }}
+                                </a>
+                            </h3>
+                            <a href="{{ route('services-details', $service->title) }}" class="btn border-btn">Read more</a>
                         </div>
                     </div>
                 </div>

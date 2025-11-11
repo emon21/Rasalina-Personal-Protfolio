@@ -5,7 +5,6 @@ $portfoliosByCategory = $portfolio->groupBy('portfolio_name');
 
 @endphp
 
-
 <section class="portfolio">
     <div class="container">
         <div class="row justify-content-center">
@@ -50,14 +49,14 @@ $portfoliosByCategory = $portfolio->groupBy('portfolio_name');
                         <div class="portfolio__active">
                             @foreach ($portfolio as $item)
                                 <div class="portfolio__item">
-                                    <div class="portfolio__thumb">
-                                        <img src="{{ asset($item->portfolio_image) }}" style="height: 520px;width:100%"
-                                            alt="">
+                                    <div class="portfolio__thumb">        
+                                    <img src="{{ ($item->portfolio_image) ? asset($item->portfolio_image) : asset('uploads/no_image.jpg') }}" style="height: 520px;width:100%" alt="">
                                     </div>
                                     <div class="portfolio__overlay__content">
                                         <span>{{ $item->portfolio_name }}</span>
-                                        <h4 class="title"><a href="{{ route('portfolio.details', $item->portfolio_title) }}">{{ $item->portfolio_title }}</a>
-                                        </h4>                                    <a href="{{ route('portfolio.details', $item->portfolio_title) }}" class="link">Case Study</a>
+                                        <h4 class="title">{{ Str::title(str_replace('-', ' ', $item->portfolio_title)) }}
+                                        </h4>                             
+                                        <a href="{{ route('portfolio.details', $item->portfolio_title) }}" class="link">Case Study</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -78,17 +77,13 @@ $portfoliosByCategory = $portfolio->groupBy('portfolio_name');
                                 @foreach ($items as $item)
                                     <div class="portfolio__item">
                                         <div class="portfolio__thumb">
-                                            <img src="{{ asset($item->portfolio_image) }}"
-                                                style="height: 520px; width: 100%; object-fit: cover;"
-                                                alt="{{ $item->portfolio_title }}">
+                                                <img src="{{ ($item->portfolio_image) ? asset($item->portfolio_image) : asset('uploads/no_image.jpg') }}" style="height: 520px;width:100%" alt="{{ $item->portfolio_title }}">
                                         </div>
                                         <div class="portfolio__overlay__content">
                                             <span>{{ $item->portfolio_name }}</span>
-                                            <h4 class="title">
-                                                <a href="{{ route('portfolio.details', $item->id) }}">
-                                                    {{ $item->portfolio_title }}
-                                                </a>
-                                            </h4>
+                                             <h4 class="title">
+                                                {{ Str::title(str_replace('-', ' ', $item->portfolio_title)) }}
+                                             </h4>
                                             <a href="{{ route('portfolio.details', $item->id) }}" class="link">Case Study</a>
                                         </div>
                                     </div>

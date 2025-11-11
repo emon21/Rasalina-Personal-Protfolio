@@ -18,24 +18,18 @@
                                         <a href="{{ route('website') }}">Home</a>
                                     </li>
                                     <li><a href="{{ route('about') }}">About</a></li>
-                                    <li><a href="#">Services</a></li>
+                                    <li class="{{ Route::is('service') ? 'active' : '' }}"><a href="{{ route('service') }}">Services</a>
+                                    </li>
+
                                     <li class="{{ Route::is('portfolio') ? 'active' : '' }}">
                                         <a href="{{ route('portfolio') }}">Portfolio</a>
                                     </li>
-                                    
-                                    <li class="menu-item-has-children"><a href="#">Portfolio</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
-                                            {{-- <li><a href="{{ route('portfolio.details') }}">Portfolio Details</a></li> --}}
-                                        </ul>
+
+                                    <li class="menu-item-has-children"><a href="{{route('blog')}}"> Blog</a>
                                     </li>
-                                    <li class="menu-item-has-children"><a href="#">Our Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{route('blog')}}">Our News</a></li>
-                                            <li><a href="#">News Details</a></li>
-                                        </ul>
-                                    </li>
+
                                     <li><a href="{{ route('contact') }}">contact me</a></li>
+
                                 </ul>
                             </div>
                             <div class="header__btn d-none d-md-block">

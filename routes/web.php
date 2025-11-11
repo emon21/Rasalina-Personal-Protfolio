@@ -284,6 +284,8 @@ Route::post('/comment/store', [CommentController::class, 'store'])->name('commen
 
 Route::get('comment-reply-remove/{comment}', [CommentController::class, 'CommentRemove'])->name('comment-reply-remove');
 
+
+
  # services-details
 Route::get('services-details/{service}',[ServiceController::class,'ServicesDetails'])->name('services-details');
 
@@ -319,6 +321,10 @@ Route::controller(FrontendController::class)->group(function () {
 
     Route::get('contact', 'Contact')->name('contact');
     Route::post('contact/store', 'ContactStore')->name('contact.store');
+
+    #service
+    Route::get('service', 'Service')->name('service');
+    Route::get('service/details/{service:title}', 'ServicesDetails')->name('service.details');
 
 });
 

@@ -14,7 +14,7 @@ $blogs = App\Models\Blog::latest()->limit(3)->inRandomOrder()->get();
                             <div class="blog__post__thumb">
                                 <a href="blog-details.html">
                                     <img src="{{ $blog->blog_image ? asset($blog->blog_image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYVjCv6r01QNNREAOWdrg1XtogAUnho3wTmtnubDkacSR7UlSWJWD7yAj5h4DU7NS9ecw&usqp=CAU' }}"
-                                        alt="" width="480" height="320">
+                                        alt="" width="430" height="320">
                                     </a>
                                 <div class="blog__post__tags">
                                     <a href="blog.html">{{$blog->category->name}}</a>
