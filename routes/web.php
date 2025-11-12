@@ -311,7 +311,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('portfolio/details/{portfolio}', 'PortfolioDetails')->name('portfolio.details');
 
     Route::get('blog', 'blog')->name('blog');
-    Route::get('blog/details/{blog}', 'BlogDetails')->name('blog-details');
+    Route::get('blog/details/{blog:blog_title}', 'BlogDetails')->name('blog-details');
 
     Route::get('category/post/{id}', 'CategoryPost')->name('category.post');
 

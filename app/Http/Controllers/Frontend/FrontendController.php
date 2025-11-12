@@ -61,46 +61,31 @@ class FrontendController extends Controller
         return redirect()->back()->with($notification);
     }
 
-
     # Frontend Blog
     public function blog()
     {
-        $blogs = Blog::latest()->take(5)->get();
-        $recentBlogs = Blog::latest()->take(5)->get();
-        $categories = Category::withCount('blogs')
-            ->orderBy('blogs_count', 'desc')->get();
 
-        // return $categories;
-
+        // all blogs
+        $blogs = Blog::withCount(relations: 'comments')->latest()->take(5)->get();
         return view('frontend.blog.index', [
-            'categories' => $categories,
-            'blogs' => $blogs,
-            'recentBlogs' => $recentBlogs
+            'blogs' => $blogs
         ]);
     }
 
     # Frontend Blog Details
     public function BlogDetails(Blog $blog)
     {
-     
-        $recentBlogs = Blog::latest()->take(5)->get();
-        // $categories = Category::withCount('blogs')->get();
-        $categories = Category::withCount('blogs')
-            ->orderBy('blogs_count', 'desc')
-            ->get();
-
-            // $blog = Blog::with('comments')->get();
 
         // $post = Blog::with('comments.user.replies.user')->findOrFail($id);
-       $comment = Blog::with('comments')->find($blog);
 
-            // return $comment;
+        $comment = Blog::with('comments')->find($blog);
 
+        $comments = Comment::withCount('blog')->get(); // all comment
 
         return view('frontend.blog.blog-details', [
             'blog' => $blog,
             'comment' => $comment
-        ], compact('categories', 'recentBlogs'));
+        ], compact(  'comments'));
 
         // return view('frontend.blog.blog-details',[
         // 'blog' =>$blog
