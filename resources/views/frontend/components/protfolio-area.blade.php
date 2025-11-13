@@ -84,7 +84,7 @@ $portfoliosByCategory = $portfolio->groupBy('portfolio_name');
                                              <h4 class="title">
                                                 {{ Str::title(str_replace('-', ' ', $item->portfolio_title)) }}
                                              </h4>
-                                            <a href="{{ route('portfolio.details', $item) }}" class="link">Case Study</a>
+                                            <a href="{{ route('portfolio.details', $item->portfolio_title) }}" class="link">Case Study</a>
                                         </div>
                                     </div>
                                 @endforeach

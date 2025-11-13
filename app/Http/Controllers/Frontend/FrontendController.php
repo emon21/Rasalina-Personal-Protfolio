@@ -201,6 +201,7 @@ class FrontendController extends Controller
     public function ServicesDetails(Service $service)
     {
         return view('frontend/service/service-details',compact('service'));
+
     }
 
     # Frontend Portfolio
@@ -211,14 +212,12 @@ class FrontendController extends Controller
     }
 
     # Frontend Portfolio Details
-    public function PortfolioDetails(Portfolio $portfolio,$id)
+    public function PortfolioDetails(Portfolio $portfolio)
     {
         // $portfolio = Portfolio::find($portfolio);
 
         // $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
-        return $portfolio;
-
-        // return "rrrr";
+        // return $portfolio;
 
         return view('frontend.portfolio.portfolio-details', ['portfolio' => $portfolio]);
     }

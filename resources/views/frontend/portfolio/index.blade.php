@@ -55,10 +55,10 @@
                         <div class="portfolio__inner__content">
                            <h2 class="title">
                               <a
-                                 href="{{ route('portfolio.details', $portfolio) }}">{{ $portfolio->portfolio_name }}</a>
+                                 href="{{ route('portfolio.details', $portfolio->portfolio_title) }}">{{ $portfolio->portfolio_name }}</a>
                            </h2>
                            <p>{!! $portfolio->portfolio_description !!}</p>
-                           <a href="{{ route('portfolio.details', $portfolio) }}" class="link">
+                           <a href="{{ route('portfolio.details', $portfolio->portfolio_title) }}" class="link">
                               View Case Study</a>
                         </div>
                      </div>

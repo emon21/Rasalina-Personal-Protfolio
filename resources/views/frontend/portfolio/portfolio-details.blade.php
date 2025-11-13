@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="services__details__thumb">
-                        <img src="{{ asset($portfolio->portfolio_image) }}" alt="">
+                        <img src="{{ asset($portfolio->portfolio_image) }}" alt="" width="850" height="430">
                     </div>
                     <div class="services__details__content">
                         <h2 class="title">{{ $portfolio->portfolio_name }}</h2>

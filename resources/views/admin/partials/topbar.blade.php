@@ -12,7 +12,7 @@
                      </span>
                  </a> --}}
 
-                 <a href="{{ route('dashboard') }}" class="logo logo-light">
+                 <a href="{{ route('admin/dashboard') }}" class="logo logo-light">
                      <span class="logo-sm">
                          <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="logo-sm-light" height="22">
                      </span>
@@ -24,12 +24,12 @@
 
              </div>
 
-             <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect"
+             <button type="button" class="px-3 btn btn-sm font-size-24 header-item waves-effect"
                  id="vertical-menu-btn">
-                 <i class="ri-menu-2-line align-middle"></i>
+                 <i class="align-middle ri-menu-2-line"></i>
              </button>
 
-              <a href="{{ url('/') }}" target="_blank" class="btn header-item waves-effect d-flex align-items-center gap-1">
+              <a href="{{ url('/') }}" target="_blank" class="gap-1 btn header-item waves-effect d-flex align-items-center">
                      <i class="fas fa-globe"></i> <span>Website</span>
                  </a>
             
@@ -51,11 +51,11 @@
                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <i class="ri-search-line"></i>
                  </button>
-                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                 <div class="p-0 dropdown-menu dropdown-menu-lg dropdown-menu-end"
                      aria-labelledby="page-header-search-dropdown">
 
                      <form class="p-3">
-                         <div class="mb-3 m-0">
+                         <div class="m-0 mb-3">
                              <div class="input-group">
                                  <input type="text" class="form-control" placeholder="Search ...">
                                  <div class="input-group-append">
@@ -165,7 +165,7 @@
                      <i class="ri-notification-3-line"></i>
                      <span class="noti-dot"></span>
                  </button>
-                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                 <div class="p-0 dropdown-menu dropdown-menu-lg dropdown-menu-end"
                      aria-labelledby="page-header-notifications-dropdown">
                      <div class="p-3">
                          <div class="row align-items-center">
@@ -243,7 +243,7 @@
                      </div>
                      <div class="p-2 border-top">
                          <div class="d-grid">
-                             <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                             <a class="text-center btn btn-sm btn-link font-size-14" href="javascript:void(0)">
                                  <i class="mdi mdi-arrow-right-circle me-1"></i> View More..
                              </a>
                          </div>
@@ -265,25 +265,25 @@
                  <div class="dropdown-menu dropdown-menu-end">
                      <!-- item-->
                      <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
-                             class="ri-user-line align-middle me-1"></i>
+                             class="align-middle ri-user-line me-1"></i>
                          Profile</a>
                      <a class="dropdown-item" href="{{ route('admin.change.password') }}"><i
-                             class="ri-wallet-2-line align-middle me-1"></i>
+                             class="align-middle ri-wallet-2-line me-1"></i>
                          Change Password</a>
                      <a class="dropdown-item d-block" href="#"><span
-                             class="badge bg-success float-end mt-1">11</span><i
-                             class="ri-settings-2-line align-middle me-1"></i> Settings</a>
-                     <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle me-1"></i>
+                             class="mt-1 badge bg-success float-end">11</span><i
+                             class="align-middle ri-settings-2-line me-1"></i> Settings</a>
+                     <a class="dropdown-item" href="#"><i class="align-middle ri-lock-unlock-line me-1"></i>
                          Lock screen</a>
                      <div class="dropdown-divider"></div>
 
                      {{-- <a class="dropdown-item text-danger" href="{{ route('logout') }}">
-                                <i class="ri-shut-down-line align-middle me-1 text-danger"></i>
+                                <i class="align-middle ri-shut-down-line me-1 text-danger"></i>
                                 Logout</a> --}}
                      <form method="POST" action="{{ route('admin.logout') }}">
                          @csrf
                          <button type="submit" class="dropdown-item text-danger">
-                             <i class="ri-shut-down-line align-middle me-1 text-danger"></i>
+                             <i class="align-middle ri-shut-down-line me-1 text-danger"></i>
                              Logout</button>
                      </form>
                  </div>

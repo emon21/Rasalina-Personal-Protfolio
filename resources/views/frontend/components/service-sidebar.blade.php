@@ -21,7 +21,7 @@ $services = App\Models\Service::latest()->get();
                               </div>
                               <div class="rc__post__content">
                                  <h5 class="title">
-                                    <a href="{{ route('service.details', $service->title) }}">{{ $service->title }}</a>
+                                    <a href="{{ route('service.details', $service->title) }}">{{ ucwords(str_replace('-', ' ', $service->title))  }}</a>
                                  </h5>
                                  <span class="post-date"><i class="fal fa-calendar-alt"></i>
                                     {{ Carbon\Carbon::parse($service->created_at)->format('d M Y') }},{{ Carbon\Carbon::parse($service->created_at)->diffForHumans() }}</span>

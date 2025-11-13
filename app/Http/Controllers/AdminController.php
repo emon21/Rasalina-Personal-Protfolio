@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller
 {
 
+    public function login(){
+        return view('auth.login');
+    }
+
     public function logout(Request $request)
     {
 
