@@ -211,12 +211,14 @@ class FrontendController extends Controller
     }
 
     # Frontend Portfolio Details
-    public function PortfolioDetails(Portfolio $portfolio)
+    public function PortfolioDetails(Portfolio $portfolio,$id)
     {
         // $portfolio = Portfolio::find($portfolio);
 
         // $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
-        // return $portfolio;
+        return $portfolio;
+
+        // return "rrrr";
 
         return view('frontend.portfolio.portfolio-details', ['portfolio' => $portfolio]);
     }

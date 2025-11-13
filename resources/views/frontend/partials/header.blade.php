@@ -1,3 +1,9 @@
+@php
+
+$route = Route::current()->getName();
+
+@endphp
+
 <header>
     <div id="sticky-header" class="menu__area transparent-header">
         <div class="container custom-container">
@@ -25,15 +31,15 @@
                                         <a href="{{ route('portfolio') }}">Portfolio</a>
                                     </li>
 
-                                    <li class="menu-item-has-children"><a href="{{route('blog')}}"> Blog</a>
+                                    <li class="menu-item-has-children {{ ($route == 'blog') ? 'active' : '' }}"><a href="{{route('blog')}}"> Blog</a>
                                     </li>
 
-                                    <li><a href="{{ route('contact') }}">contact me</a></li>
+                                    <li class="{{ ($route == 'contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">contact me</a></li>
 
                                 </ul>
                             </div>
                             <div class="header__btn d-none d-md-block">
-                                <a href="#" class="btn">Contact me</a>
+                                <a href="{{ route('contact') }}" class="btn">Contact me</a>
                             </div>
                         </nav>
                     </div>

@@ -113,7 +113,6 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('about/multi/image', 'AboutMultiImage')->name('about.multi.image');
     // Route::get('about/multi/image', ' MultiImage')->name('about.multi.image');
 
-
     Route::get('all/multi/image', 'AllMultiImage')->name('all.multi.image');
     Route::post('store/multi/image', 'StoreMultiImage')->name('store.multi.image');
 
@@ -126,25 +125,23 @@ Route::controller(AboutController::class)->group(function () {
 });
 
 
-
 # portfolio route group
 
-Route::controller(PortfolioController::class)->group(function () {
+// Route::controller(PortfolioController::class)->group(function () {
 
-    Route::get('all/portfolio', 'AllPortfolio')->name('all.portfolio');
+//     Route::get('all/portfolio', 'AllPortfolio')->name('all.portfolio');
 
-    Route::get('add/portfolio', 'AddPortfolio')->name('add.portfolio');
-    Route::post('store/portfolio', 'StorePortfolio')->name('store.portfolio');
+//     Route::get('add/portfolio', 'AddPortfolio')->name('add.portfolio');
+//     Route::post('store/portfolio', 'StorePortfolio')->name('store.portfolio');
 
-    Route::get('edit/portfolio/{id}', 'EditPortfolio')->name('edit.portfolio');
-    Route::put('update/portfolio/{id}', 'UpdatePortfolio')->name('update.portfolio');
+//     Route::get('edit/portfolio/{id}', 'EditPortfolio')->name('edit.portfolio');
+//     Route::put('update/portfolio/{id}', 'UpdatePortfolio')->name('update.portfolio');
 
-    Route::delete('delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
+//     Route::delete('delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
 
-    // Route::get('/portfolio/details/{portfolio:portfolio_name}',  'PortfolioDetails')->name('portfolio.details');
-    Route::get('/portfolio/details/{id}',  'PortfolioDetails')->name('portfolio.details');
-});
-
+//     // Route::get('/portfolio/details/{portfolio:portfolio_name}',  'PortfolioDetails')->name('portfolio.details');
+//     Route::get('/portfolio/details/{id}',  'PortfolioDetails')->name('portfolio.details');
+// });
 
 
 # route group
@@ -156,8 +153,6 @@ Route::controller(PortfolioController::class)->group(function () {
 //     Route::get('/dashboard', 'AdminController@dashboard'); // Accessible at /admin/dashboard
 //     Route::get('/settings', 'AdminController@settings');   // Accessible at /admin/settings
 // });
-
-
 
 
 # ================== Backend Route List ================== #
@@ -259,17 +254,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('client', ClientController::class);
 
     # Service Route
-    Route::resource('service',ServiceController::class);
+    Route::resource('service', ServiceController::class);
 
     # website Setting Route
-    Route::get('website-setting/footer',[WebsiteSettingController::class,'FooterInfo'])->name('website-setting.footer');
-    Route::put('website-setting/footer/{footer}',[WebsiteSettingController::class, 'FooterInfoUpdate'])->name('website-setting.footer.update');
+    Route::get('website-setting/footer', [WebsiteSettingController::class, 'FooterInfo'])->name('website-setting.footer');
+    Route::put('website-setting/footer/{footer}', [WebsiteSettingController::class, 'FooterInfoUpdate'])->name('website-setting.footer.update');
 
     # Contact Route 
 
-    Route::get('contact',[WebsiteSettingController::class,'Contact'])->name('contact');
-    Route::get('contact/delete/{contact}',[WebsiteSettingController::class,'DeleteMessage'])->name('contact.delete');
-    
+    Route::get('contact', [WebsiteSettingController::class, 'Contact'])->name('contact');
+    Route::get('contact/delete/{contact}', [WebsiteSettingController::class, 'DeleteMessage'])->name('contact.delete');
 });
 
 
@@ -284,30 +278,28 @@ Route::post('/comment/store', [CommentController::class, 'store'])->name('commen
 
 Route::get('comment-reply-remove/{comment}', [CommentController::class, 'CommentRemove'])->name('comment-reply-remove');
 
-
-
- # services-details
-Route::get('services-details/{service}',[ServiceController::class,'ServicesDetails'])->name('services-details');
-
-
+# services-details
+Route::get('services-details/{service}', [ServiceController::class, 'ServicesDetails'])->name('services-details');
 
 # 
-Route::prefix('frontend')->group(function () {
-    // Route::get('/users', 'AdminController@users')->name('users'); // Route name: admin.users
-    // Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
-    Route::get('portfolio', [FrontendController::class, 'Portfolio'])->name('portfolio');
+// Route::prefix('frontend')->group(function () {
+//     // Route::get('/users', 'AdminController@users')->name('users'); // Route name: admin.users
+//     // Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
+//     Route::get('portfolio', [FrontendController::class, 'Portfolio'])->name('portfolio');
 
-    // Route::get('portfolio/details/{slug}', [FrontendController::class, 'PortfolioDetails'] )->name('portfolio.details');
+//     // Route::get('portfolio/details/{slug}', [FrontendController::class, 'PortfolioDetails'] )->name('portfolio.details');
 
-    Route::get('portfolio/details/{portfolio:portfolio_title}', [FrontendController::class, 'PortfolioDetails'])
-        ->name('portfolio.details');
-});
+//     Route::get('portfolio/details/{portfolio:portfolio_title}', [FrontendController::class, 'PortfolioDetails'])
+//         ->name('portfolio.details');
+// });
 
 
+# Frontend Route 
 Route::controller(FrontendController::class)->group(function () {
 
     # Portfolio 
     Route::get('portfolio', 'Portfolio')->name('portfolio');
+    // Route::get('portfolio/details/{portfolio}', 'PortfolioDetails')->name('portfolio.details');
     Route::get('portfolio/details/{portfolio}', 'PortfolioDetails')->name('portfolio.details');
 
     Route::get('blog', 'blog')->name('blog');
@@ -325,7 +317,6 @@ Route::controller(FrontendController::class)->group(function () {
     #service
     Route::get('service', 'Service')->name('service');
     Route::get('service/details/{service:title}', 'ServicesDetails')->name('service.details');
-
 });
 
 

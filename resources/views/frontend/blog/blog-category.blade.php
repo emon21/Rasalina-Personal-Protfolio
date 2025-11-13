@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.app', ['title' => 'Blog Category - Rasalina'])
 
 {{-- resources/views/blog/category.blade.php --}}
 

@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.app', ['title' => 'Contact - Rasalina'])
 @section('content')
 <!-- breadcrumb-area -->
             <section class="breadcrumb__wrap">

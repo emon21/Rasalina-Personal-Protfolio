@@ -1,21 +1,13 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.app', ['title' => 'Portfolio - Rasalina'])
 
 @section('content')
    <!-- breadcrumb-area -->
    <section class="breadcrumb__wrap">
       <div class="container custom-container">
          <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-8 col-md-10">
-               <div class="breadcrumb__wrap__content">
-                  <h2 class="title">Case Study</h2>
-                  <nav aria-label="breadcrumb">
-                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
-                     </ol>
-                  </nav>
-               </div>
-            </div>
+
+            <x-breadcrumb title="Case Study" current="Portfolio" />
+
          </div>
       </div>
       <div class="breadcrumb__wrap__icon">
@@ -51,20 +43,24 @@
                   <div class="row gx-0 align-items-center">
                      <div class="col-lg-6 col-md-10">
                         <div class="portfolio__inner__thumb">
-                           <a href="{{ route('portfolio.details',$portfolio->portfolio_title) }}">
+                           <a href="{{ route('portfolio.details', $portfolio->portfolio_title) }}">
                               {{-- <img src="{{ asset($portfolio->portfolio_image) }}" alt=""> --}}
-                              <img src="{{ ($portfolio->portfolio_image) ? asset($portfolio->portfolio_image) : asset('uploads/no_image.jpg') }}" style="width:620px;height:380px;" alt="{{ $portfolio->portfolio_name }}">
+                              <img
+                                 src="{{ ($portfolio->portfolio_image) ? asset($portfolio->portfolio_image) : asset('uploads/no_image.jpg') }}"
+                                 style="width:620px;height:380px;" alt="{{ $portfolio->portfolio_name }}">
                            </a>
                         </div>
                      </div>
                      <div class="col-lg-6 col-md-10">
                         <div class="portfolio__inner__content">
                            <h2 class="title">
-                              <a href="{{ route('portfolio.details',$portfolio->portfolio_title) }}">{{ $portfolio->portfolio_name }}</a>
+                              <a
+                                 href="{{ route('portfolio.details', $portfolio) }}">{{ $portfolio->portfolio_name }}</a>
                            </h2>
                            <p>{!! $portfolio->portfolio_description !!}</p>
-                           <a href="{{ route('portfolio.details', $portfolio->portfolio_title) }}" class="link">View Case Study</a>
-                        </div> 
+                           <a href="{{ route('portfolio.details', $portfolio) }}" class="link">
+                              View Case Study</a>
+                        </div>
                      </div>
                   </div>
                </div>

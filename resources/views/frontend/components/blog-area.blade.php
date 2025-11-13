@@ -16,21 +16,21 @@
                                     alt="" width="430" height="327">
                             </a>
                             <div class="blog__post__tags">
-                                <a href="blog.html">{{$blog->category->name}}</a>
+                                <a href="#">{{$blog->category->name}}</a>
                             </div>
                         </div>
                         <div class="blog__post__content">
                             <span class="date">{{ Carbon\Carbon::parse($blog->created_at)->diffForHumans() }}</span>
                             {{-- <span class="date">13 january 2021</span> --}}
-                            <h3 class="title"><a href="blog-details.html">{{ $blog->blog_title }}</a></h3>
-                            <a href="{{ route('blog-details', $blog)}}" class="read__more">Read More</a>
+                            <h3 class="title"><a href="{{ route('blog-details',$blog->blog_title) }}">{{ Str::title(str_replace('-', ' ', $blog->blog_title)) }}</a></h3>
+                            <a href="{{ route('blog-details', $blog->blog_title)}}" class="read__more">Read More</a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
         <div class="text-center blog__button">
-            <a href="blog.html" class="btn">more blog</a>
+            <a href="{{ route('blog') }}" class="btn">more blog</a>
         </div>
     </div>
 </section>

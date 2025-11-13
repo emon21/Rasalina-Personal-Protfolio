@@ -1,21 +1,11 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.app', ['title' => 'Blog - Rasalina'])
 
 @section('content')
     <!-- breadcrumb-area -->
     <section class="breadcrumb__wrap">
         <div class="container custom-container">
             <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10">
-                    <div class="breadcrumb__wrap__content">
-                        <h2 class="title">Recent Article</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Blog</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
+                <x-breadcrumb title="Recent Article" current="Blog" />
             </div>
         </div>
         <div class="breadcrumb__wrap__icon">
