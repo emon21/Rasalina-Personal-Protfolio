@@ -34,6 +34,12 @@ class AdminController extends Controller
     }
 
 
+    # Dashboard
+    public function Dashboard(){
+        return view('admin.index');
+    }
+
+
     //Profile
 
     public function profile(User $user)

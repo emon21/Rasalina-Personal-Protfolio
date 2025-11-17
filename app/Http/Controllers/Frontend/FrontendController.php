@@ -66,7 +66,8 @@ class FrontendController extends Controller
     {
 
         // all blogs
-        $blogs = Blog::withCount(relations: 'comments')->latest()->take(5)->get();
+        // $blogs = Blog::withCount(relations: 'comments')->latest()->take(5)->get();
+        $blogs = Blog::withCount(relations: 'comments')->paginate(3);
         return view('frontend.blog.index', [
             'blogs' => $blogs
         ]);

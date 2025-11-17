@@ -12,7 +12,7 @@
                      </span>
                  </a> --}}
 
-                 <a href="{{ route('admin/dashboard') }}" class="logo logo-light">
+                 <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
                      <span class="logo-sm">
                          <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="logo-sm-light" height="22">
                      </span>
@@ -32,8 +32,7 @@
               <a href="{{ url('/') }}" target="_blank" class="gap-1 btn header-item waves-effect d-flex align-items-center">
                      <i class="fas fa-globe"></i> <span>Website</span>
                  </a>
-            
-
+     
              <!-- App Search-->
              <form class="app-search d-none d-lg-block">
                  <div class="position-relative">

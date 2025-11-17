@@ -71,4 +71,4 @@ Route::controller(FrontendController::class)->group(function () {
 require __DIR__ . '/auth.php';
 
 // admin route
-// require __DIR__ . '/admin.php';
+require __DIR__ . '/admin.php';

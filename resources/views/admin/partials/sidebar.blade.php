@@ -1,7 +1,11 @@
+{{-- @php
+
+$route = Route::Courent()->getName();
+
+@endphp --}}
+
 <div class="vertical-menu">
-
     <div data-simplebar class="h-100">
-
         <!-- User details -->
         <div class="mt-3 text-center user-profile">
             <div class="">
@@ -22,15 +26,14 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
                 <li>
-                    <a href="{{ route('dashboard') }}" class="waves-effect">
-                        <i class="ri-dashboard-line"></i><span
-                            class="px-2 py-1 badge rounded-pill bg-success float-end">3</span>
+                    <a href="{{ route('admin.dashboard') }}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('home.slider') }}" class="waves-effect">
+                    <a href="{{ route('admin.slider') }}" class="waves-effect">
                         <i class="ri-slideshow-3-line"></i>
                         <span>Home Slider</span>
                     </a>
@@ -44,17 +47,17 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('about.page') }}">
+                            <a href="{{ route('admin.about.page') }}">
                                 <i class="ri-file-list-3-line"></i> <span>About Page</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('all.multi.image') }}">
+                            <a href="{{ route('admin.all.multi.image') }}">
                                 <i class="ri-image-2-line"></i> <span>All Multi Image</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('about.multi.image') }}">
+                            <a href="{{ route('admin.about.multi.image') }}">
                                 <i class="ri-image-add-line"></i> <span>About Multi Image</span>
                             </a>
                         </li>
@@ -69,12 +72,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('all.portfolio') }}">
+                            <a href="{{ route('admin.all.portfolio') }}">
                                 <i class="ri-gallery-line"></i> <span>All Portfolio</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('add.portfolio') }}">
+                            <a href="{{ route('admin.add.portfolio') }}">
                                 <i class="ri-add-circle-line"></i> <span>Add Portfolio</span>
                             </a>
                         </li>

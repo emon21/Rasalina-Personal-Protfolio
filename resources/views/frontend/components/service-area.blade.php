@@ -23,17 +23,17 @@ $services = App\Models\Service::latest()->get();
                 <div class="col-xl-3">
                     <div class="services__item">
                         <div class="services__thumb">
-                            <a href="{{ route('service/details', $service) }}">
+                            <a href="{{ route('service.details', $service) }}">
                                 <img src="{{ ($service->picture) ? asset('uploads/service/' . $service->picture) : asset('uploads/no_image.jpg') }}" alt="" class="mt-2" width="250" height="250">
                             </a>
                         </div>
                         <div class="services__content">
                             <h3 class="title">
-                                <a href="{{ route('service/details', $service->title) }}">
+                                <a href="{{ route('service.details', $service->title) }}">
                                     {{ Str::title(str_replace('-', ' ', $service->title)) }}
                                 </a>
                             </h3>
-                            <a href="{{ route('service/details', $service->title) }}" class="btn border-btn">Read more</a>
+                            <a href="{{ route('service.details', $service->title) }}" class="btn border-btn">Read more</a>
                         </div>
                     </div>
                 </div>
