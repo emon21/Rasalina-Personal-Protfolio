@@ -50,8 +50,8 @@
             </div>
             
             <!-- sidebar-->
-         @include('frontend.components.service-sidebar')
-         <!-- sidebar end-->
+            @include('frontend.components.service-sidebar')
+            <!-- sidebar end-->
          </div>
       </div>
    </section>

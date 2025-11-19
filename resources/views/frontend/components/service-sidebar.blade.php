@@ -3,6 +3,7 @@
 $services = App\Models\Service::latest()->get();
 
 @endphp
+
  <div class="col-lg-4">
                <aside class="blog__sidebar">
                   <div class="widget">

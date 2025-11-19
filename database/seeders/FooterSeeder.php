@@ -13,8 +13,7 @@ class FooterSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-
+        
         $footer = [
             'footer_phone_no' => '+81383 766 284',
             'footer_description' => 'There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form is also here.',

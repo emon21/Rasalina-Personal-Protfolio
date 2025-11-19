@@ -29,7 +29,7 @@
                             <h5 class="my-0 text-success text-bold"><i class="mdi mdi-bullseye-arrow me-1"></i> All
                                 Portfolio
                             </h5>
-                            <a href="{{ route('add.portfolio') }}" class="btn btn-outline-success">Create Portfolio</a>
+                            <a href="{{ route('admin.add.portfolio') }}" class="btn btn-outline-success">Create Portfolio</a>
                         </div>
 
                         <div class="mx-4 mt-3 square-switems-stretch">
@@ -65,7 +65,6 @@
                                                         {{ $portfolio->portfolio_title }}
                                                     </td>
 
-
                                                     {{-- {{ ($portfolio->portfolio_name) ? asset($portfolio->portfolio_name) :
                                                     asset('uploads/no_image.jpg') }} --}}
 
@@ -76,12 +75,12 @@
                                                     </td>
 
                                                     <td>
-                                                        <a href="{{ route('edit.portfolio', $portfolio) }}"
+                                                        <a href="{{ route('admin.edit.portfolio', $portfolio) }}"
                                                             class="btn btn-primary" title="Edit Data"><i
                                                                 class="mdi mdi-pencil"></i>
                                                         </a>
 
-                                                        <form action="{{ route('delete.portfolio', $portfolio) }}"
+                                                        <form action="{{ route('admin.delete.portfolio', $portfolio) }}"
                                                             method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')

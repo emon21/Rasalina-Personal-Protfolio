@@ -28,7 +28,7 @@
                   <div class="col-12">
                      <div class="card">
                         <div class="card-body">
-                           <form action="{{route('update.about',$about)}}" method="POST" enctype="multipart/form-data">
+                           <form action="{{route('admin.update.about',$about)}}" method="POST" enctype="multipart/form-data">
                               @csrf
                               @method('PUT')
                               <div class="mb-3 row">

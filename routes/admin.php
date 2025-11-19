@@ -5,15 +5,15 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\admin\PartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\BlogController;
-use App\Http\Controllers\home\AboutController;
+use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\home\PortfolioController;
-use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\admin\PortfolioController;
+use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\WebsiteSettingController;
 
 /*
@@ -23,6 +23,19 @@ use App\Http\Controllers\admin\WebsiteSettingController;
 // Admin Login
 Route::get('/admin', [AdminController::class, 'login'])->name('admin.login');
 
+
+# Login to Dashboard
+Route::get('/dashboard', function () {
+   
+   # Toaster Helper Function Using
+   flashToastr('success', 'User Login Successfully');
+   // return view('dashboard');
+   return view('admin.index');
+
+   // logout
+   // Route::post('logout',[AdminController::class,'logout'])->name('admin.logout');
+
+})->middleware(['auth', 'verified'])->name('dashboard');
 # ============== Backend Route Start ============== #
 
 
@@ -53,15 +66,17 @@ Route::prefix('admin')->middleware(['auth'])
       });
 
       # Slider 
-      Route::controller(HomeSliderController::class)->group(function () {
+      Route::controller(SliderController::class)->group(function () {
 
-         Route::get('home.slider', 'HomeSlider')->name('slider');
-         Route::get('home/slider/create', 'create')->name('slider.create');
-         Route::post('home/slider/store', 'store')->name('slider.store');
-
-         Route::get('home/slider/edit/{slider}', 'edit')->name('slider.edit');
-         Route::put('home/slider/update/{slider}', 'update')->name('slider.update');
-         Route::get('home/slider/delete/{slider}', 'destroy')->name('slider.delete');
+         Route::get('slider', 'HomeSlider')->name('slider');
+         //create,store
+         Route::get('slider/create', 'create')->name('slider.create');
+         Route::post('slider/store', 'store')->name('slider.store');
+         // edit,update
+         Route::get('slider/edit/{slider}', 'edit')->name('slider.edit');
+         Route::put('slider/update/{slider}', 'update')->name('slider.update');
+         //delete
+         Route::get('slider/delete/{slider}', 'destroy')->name('slider.delete');
 
          // Route::delete('/home/slider/delete/{id}', HomeSliderController::class)->name('home.slider.delete');
 
@@ -78,7 +93,7 @@ Route::prefix('admin')->middleware(['auth'])
    Route::controller(AboutController::class)->group(function () {
 
       //Route List
-      Route::get('about/page', 'about')->name('about.page');
+      Route::get('about', 'about')->name('about');
       //update about
       Route::put('update/about/{id}', 'AboutUpdate')->name('update.about');
 
@@ -102,7 +117,7 @@ Route::prefix('admin')->middleware(['auth'])
 
    Route::controller(PortfolioController::class)->group(function () {
 
-      Route::get('all/portfolio', 'AllPortfolio')->name('all.portfolio');
+      Route::get('portfolio', 'AllPortfolio')->name('portfolio');
 
       Route::get('add/portfolio', 'AddPortfolio')->name('add.portfolio');
       Route::post('store/portfolio', 'StorePortfolio')->name('store.portfolio');

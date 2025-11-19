@@ -2,17 +2,21 @@
 
 @php
 
-// Categories
-$categories = App\Models\Category::withCount('blogs')->orderBy('blogs_count', 'desc')->get();
+      // Categories
+      $categories = App\Models\Category::withCount('blogs')->orderBy('blogs_count', 'desc')->get();
 
-// Blogs
-$blogs = App\Models\Blog::latest()->take(5)->get();
+      // Blogs
+      $blogs = App\Models\Blog::latest()->take(5)->get();
 
-// Blog with Comment
-// $RecentComments = App\Models\Blog::with('comments')->get();
-// $RecentComments = App\Models\Comment::with('blog')->get();
+      // Blog with Comment
+      // $RecentComments = App\Models\Blog::with('comments')->get();
+      // $RecentComments = App\Models\Comment::with('blog')->get();
 
-$blogComments = App\Models\Comment::withCount('blog')->latest()->orderBy('id','desc')->get(); // blog with comment and count
+      $blogComments = App\Models\Comment::withCount('blog')->latest()->orderBy('id','desc')->get(); // blog with comment and count
+
+      // $blogs = Blog::withCount(relations: 'comments')->paginate(3);
+
+      // $blogs = Blog::withCount(relations: 'comments')->latest()->take(5)->get();
 
 @endphp
 
@@ -53,7 +57,7 @@ $blogComments = App\Models\Comment::withCount('blog')->latest()->orderBy('id','d
          <h4 class="widget-title">Categories</h4>
          <ul class="sidebar__cat">
             @forelse($categories as $category)
-               <li class="sidebar__cat__item"><a href="{{ route('category.post', $category->id) }}">{{ $category->name }} (
+               <li class="sidebar__cat__item"><a href="{{ route('category.post', $category) }}">{{ $category->name }} (
                      {{ $category->blogs_count }}
                      )</a></li>
             @empty

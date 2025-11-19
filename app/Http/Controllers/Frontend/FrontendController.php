@@ -9,7 +9,7 @@ use App\Models\Contact;
 use App\Models\Service;
 use App\Models\Category;
 use App\Models\Portfolio;
-use App\Models\HomeSlider;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,15 +18,14 @@ class FrontendController extends Controller
     # Frontend Home
     public function index()
     {
-        $sliders = HomeSlider::latest()->get();
+        $sliders = Slider::latest()->get();
         return view('frontend.index', compact('sliders'));
     }
 
     # Frontend Banner
     public function banner()
     {
-
-        $slider = HomeSlider::first();
+        $slider = Slider::first();
         // return $slider;
         return view('frontend.components.banner-area', compact('slider'));
     }
@@ -64,10 +63,7 @@ class FrontendController extends Controller
     # Frontend Blog
     public function blog()
     {
-
-        // all blogs
-        // $blogs = Blog::withCount(relations: 'comments')->latest()->take(5)->get();
-        $blogs = Blog::withCount(relations: 'comments')->paginate(3);
+        $blogs = Blog::latest()->paginate(3);
         return view('frontend.blog.index', [
             'blogs' => $blogs
         ]);
@@ -79,37 +75,63 @@ class FrontendController extends Controller
 
         // $post = Blog::with('comments.user.replies.user')->findOrFail($id);
 
-        $comment = Blog::with('comments')->find($blog);
+        # single comment on Blog
+       // $comment = Blog::with('comments')->find($blog);
 
-        $comments = Comment::withCount('blog')->get(); // all comment
+        # All comment on Blog
+      // $comments = Comment::withCount('blog')->get(); // all comment
+
+        // return $blog->comments;
+        // return $comment;
+
+        // return view('frontend.blog.blog-details', [
+        //     'blog' => $blog,
+        //     // 'comment' => $comment
+        // ], compact('comments'));
+
+
+        // Next Post (Current ID থেকে বড়)
+        $nextBlog = Blog::where('id', '>', $blog->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        // Previous Post (Current ID থেকে ছোট)
+        $prevBlog = Blog::where('id', '<', $blog->id)
+                    ->orderBy('id', 'desc')
+                    ->first();
+
+
+
 
         return view('frontend.blog.blog-details', [
             'blog' => $blog,
-            'comment' => $comment
-        ], compact(  'comments'));
-
-        // return view('frontend.blog.blog-details',[
-        // 'blog' =>$blog
+            'prevBlog' => $prevBlog,
+            'nextBlog' => $nextBlog,
+        ]);
+        
+        // return view('frontend.blog.blog-details', [
+        //     'blog' => $blog
+        // ]);
 
     }
 
+    # Category on Post
 
-    function CategoryPost($id) {
-
-        $category = Category::where('name', $id)
-        ->orWhere('id', $id)
-        ->firstOrFail();
+     public function CategoryPost(Category $category) {
 
         // $post = Blog::where('category_id',$id)->get();
 
-        $posts = $category->blogs()
-              ->with('category')
-              ->latest()
-              ->paginate(12);
+       // $posts = $category->blogs()->with('category')
+           // ->latest()->get();
+        //   ->paginate(12);
+
+        $blogs = $category->blogs()->paginate(3);
+
+       // return $posts;
 
         // return view('frontend.blog.blog-category',compact('post'));
 
-        return view('frontend.blog.blog-category', compact('category', 'posts'));
+        return view('frontend.blog.blog-category', compact('category', 'blogs'));
     }
 
     # BlogCategory
@@ -128,7 +150,6 @@ class FrontendController extends Controller
         // // ]);
 
         // $category = Category::all();
-
 
 
         // $category = Category::where('name', $blog_category)
@@ -194,7 +215,7 @@ class FrontendController extends Controller
     # Frontend Services
     public function Service()
     {
-        $services = Service::latest()->get();
+        $services = Service::latest()->paginate(3);
         return view('frontend/service/index',['services' => $services]);
     }
 
@@ -208,99 +229,14 @@ class FrontendController extends Controller
     # Frontend Portfolio
     public function Portfolio()
     {
-        $portfolios = Portfolio::latest()->get();
+        $portfolios = Portfolio::latest()->paginate(5);
         return view('frontend.portfolio.index', ['portfolios' => $portfolios]);
     }
 
     # Frontend Portfolio Details
     public function PortfolioDetails(Portfolio $portfolio)
     {
-        // $portfolio = Portfolio::find($portfolio);
-
-        // $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
-        // return $portfolio;
-
         return view('frontend.portfolio.portfolio-details', ['portfolio' => $portfolio]);
     }
-
-    # Frontend Pricing
-    public function pricing()
-    {
-        return view('frontend.pricing');
-    }
-
-    # Frontend Testimonial
-    public function testimonial()
-    {
-        return view('frontend.testimonial');
-    }
-
-    # Frontend Team
-    public function team()
-    {
-        return view('frontend.team');
-    }
-
-    # Frontend Team Details
-    public function team_details()
-    {
-        return view('frontend.team_details');
-    }
-
-    # Frontend Faq
-    public function faq()
-    {
-        return view('frontend.faq');
-    }
-
-    # Frontend Error
-    public function error()
-    {
-        return view('frontend.error');
-    }
-
-    # Frontend Coming Soon
-    public function coming_soon()
-    {
-        return view('frontend.coming_soon');
-    }
-
-    # Frontend Login
-    public function login()
-    {
-        return view('frontend.login');
-    }
-
-    # Frontend Register
-    public function register()
-    {
-        return view('frontend.register');
-    }
-
-    # Frontend Forgot Password
-    public function forgot_password()
-    {
-        return view('frontend.forgot_password');
-    }
-
-    # Frontend Reset Password
-    public function reset_password()
-    {
-        return view('frontend.reset_password');
-    }
-
-    # Frontend Privacy Policy
-    public function privacy_policy()
-    {
-        return view('frontend.privacy_policy');
-    }
-
-    # Frontend Terms & Conditions
-    public function terms_conditions()
-    {
-        return view('frontend.terms_conditions');
-    }
-
-
     
 }

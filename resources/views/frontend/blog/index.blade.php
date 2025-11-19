@@ -55,7 +55,7 @@
                                     <li><i class="fal fa-calendar-alt"></i>
                                         {{ Carbon\Carbon::parse($blog->created_at)->diffForHumans() }}
                                     </li>
-                                    <li><i class="fal fa-comments-alt"></i> <a href="#">Comment ( {{ $blog->comments_count }}
+                                    <li><i class="fal fa-comments-alt"></i> <a href="#">Comment ( {{ $blog->comments->count() }}
                                             )</a></li>
                                 </ul>
                             </div>
@@ -64,23 +64,10 @@
 
                     <!-- pagination -->
                     <div class="pagination-wrap">
+
                         {{ $blogs->links('vendor/pagination/custom') }}
                         
                     </div>
-
-                    {{-- <div class="pagination-wrap">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-left"></i></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-right"></i></a></li>
-                            </ul>
-                        </nav>
-                    </div> --}}
-
 
                 </div>
 

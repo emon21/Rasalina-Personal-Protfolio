@@ -17,7 +17,6 @@ class PartnerSeeder extends Seeder
         $partner = [
             'title' => fake()->sentence(10),
             'short_description' => fake()->sentence(15),
-            
         ];
 
         # delete old slider

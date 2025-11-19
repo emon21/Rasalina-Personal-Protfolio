@@ -52,11 +52,12 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('blog/details/{blog:blog_title}', 'BlogDetails')->name('blog-details');
 
     # Category
-    Route::get('category/post/{id}', 'CategoryPost')->name('category.post');
+    Route::get('category/blog/{category:name}', 'CategoryPost')->name('category.post');
 
     # blog category
     // Route::get('blog/category/{blog_category}', 'BlogCategory')->name('blog.category');
     // Route::get('blog/category/{blog_category}/{blog}', 'BlogCategoryDetails')->name('blog.category.details');
+
 
     # Contact
     Route::get('contact', 'Contact')->name('contact');

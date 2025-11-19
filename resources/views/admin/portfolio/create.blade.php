@@ -28,7 +28,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{route('store.portfolio')}}" method="POST"
+                                    <form action="{{route('admin.store.portfolio')}}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
 

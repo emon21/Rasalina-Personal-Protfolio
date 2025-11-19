@@ -20,15 +20,16 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            UserSeeder::class,
-            SliderSeeder::class,
             AboutSeeder::class,
-            PartnerSeeder::class,
-            PortfolioSeeder::class,
+            SliderSeeder::class,
             CategorySeeder::class,
-            ClientSeeder::class,
+            BlogSeeder::class,
+            PortfolioSeeder::class,
             ServiceSeeder::class,
+            PartnerSeeder::class,
+            ClientSeeder::class,
             FooterSeeder::class,
+            UserSeeder::class,
             // Add other seeders here as needed
             // Example: ProductSeeder::class,
             // CategorySeeder::class,

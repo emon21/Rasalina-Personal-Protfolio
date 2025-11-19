@@ -35,7 +35,7 @@ $route = Route::Courent()->getName();
                 <li>
                     <a href="{{ route('admin.slider') }}" class="waves-effect">
                         <i class="ri-slideshow-3-line"></i>
-                        <span>Home Slider</span>
+                        <span>Slider</span>
                     </a>
                 </li>
 
@@ -47,7 +47,7 @@ $route = Route::Courent()->getName();
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('admin.about.page') }}">
+                            <a href="{{ route('admin.about') }}">
                                 <i class="ri-file-list-3-line"></i> <span>About Page</span>
                             </a>
                         </li>
@@ -72,7 +72,7 @@ $route = Route::Courent()->getName();
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('admin.all.portfolio') }}">
+                            <a href="{{ route('admin.portfolio') }}">
                                 <i class="ri-gallery-line"></i> <span>All Portfolio</span>
                             </a>
                         </li>
@@ -153,34 +153,6 @@ $route = Route::Courent()->getName();
                         <i class="ri-mail-line"></i><span class="px-2 py-1 badge rounded-pill bg-success float-end">{{ App\Models\Contact::count() }}</span> <!-- or ri-contacts-line -->
                         <span>Contact</span>
                     </a>
-                </li>
-
-
-                <!-- Email -->
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-mail-send-line"></i>
-                        <span>Email</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html"><i class="ri-inbox-archive-line"></i> Inbox</a></li>
-                        <li><a href="email-read.html"><i class="ri-mail-open-line"></i> Read Email</a></li>
-                    </ul>
-                </li>
-
-                <!-- Authentication -->
-                <li class="menu-title">Pages</li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-shield-user-line"></i>
-                        <span>Authentication</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="auth-login.html"><i class="ri-login-circle-line"></i> Login</a></li>
-                        <li><a href="auth-register.html"><i class="ri-user-add-line"></i> Register</a></li>
-                        <li><a href="auth-recoverpw.html"><i class="ri-lock-unlock-line"></i> Recover Password</a></li>
-                        <li><a href="auth-lock-screen.html"><i class="ri-lock-line"></i> Lock Screen</a></li>
-                    </ul>
                 </li>
             </ul>
         </div>

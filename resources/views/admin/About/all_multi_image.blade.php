@@ -29,7 +29,7 @@
                             <h5 class="my-0 text-success text-bold"><i class="mdi mdi-bullseye-arrow me-1"></i> All Multi
                                 Image
                             </h5>
-                            <a href="{{ route('about.multi.image') }}" class="btn btn-outline-success">Create Multi
+                            <a href="{{ route('admin.about.multi.image') }}" class="btn btn-outline-success">Create Multi
                                 Image</a>
                         </div>
 
@@ -53,11 +53,13 @@
                                                         {{ $loop->iteration }}
                                                     </td>
                                                     <td>
-                                                        <img src="{{ asset($multiImage->multiImage) }}" alt=""
-                                                            style="width:120px;height:80px">
+                                                        {{-- <img src="{{ asset($multiImage->multiImage) }}" alt=""
+                                                            style="width:120px;height:80px"> --}}
+                                                        <img src="{{ ($multiImage->multiImage) ? asset($multiImage->multiImage) : asset('uploads/no_image.jpg') }}"
+                                                            alt="" class="mt-2 rounded img-fluid" width="180" height="80">
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('edit.multi-image', $multiImage) }}"
+                                                        <a href="{{ route('admin.edit.multi-image', $multiImage) }}"
                                                             class="btn btn-primary" title="Edit Data"><i
                                                                 class="mdi mdi-pencil"></i>
                                                         </a>
@@ -76,11 +78,12 @@
                                                                 data-id="{{ $item->id }}">Delete</button>
                                                         </form> --}}
 
-                                                        <form action="{{ route('delete.multi-image', $multiImage) }}"
+                                                        <form action="{{ route('admin.delete.multi-image', $multiImage) }}"
                                                             method="POST" style="display:inline;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" onclick="deleteConfirmation(event)" title="Delete Data"
+                                                            <button type="submit" onclick="deleteConfirmation(event)"
+                                                                title="Delete Data"
                                                                 class="px-3 py-2 text-white border-0 rounded bg-danger">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </button>
