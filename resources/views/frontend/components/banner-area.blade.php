@@ -1,6 +1,6 @@
 @php
 
-$slider =  App\Models\HomeSlider::find(1);
+$slider =  App\Models\Slider::first();
 @endphp
 
 

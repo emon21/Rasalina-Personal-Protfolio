@@ -54,11 +54,6 @@ Route::controller(FrontendController::class)->group(function () {
     # Category
     Route::get('category/blog/{category:name}', 'CategoryPost')->name('category.post');
 
-    # blog category
-    // Route::get('blog/category/{blog_category}', 'BlogCategory')->name('blog.category');
-    // Route::get('blog/category/{blog_category}/{blog}', 'BlogCategoryDetails')->name('blog.category.details');
-
-
     # Contact
     Route::get('contact', 'Contact')->name('contact');
     Route::post('contact/store', 'ContactStore')->name('contact.store');
